@@ -32,18 +32,9 @@ body{
 
 .container{max-width:1120px;margin:0 auto;padding:0 22px}
 .section{padding:76px 0}
-.section-head{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.section-head{display:flex;align-items:center;gap:16px;margin-bottom:12px}
 .section-head h2{font-size:28px;margin:0;color:var(--text)}
 .section-line{height:1px;background:linear-gradient(90deg,transparent,var(--hair),transparent);flex:1}
-
-/* Title with logo inline (nudged slightly left) */
-.brand-title{gap:10px}
-.title-logo{
-  height:64px;
-  width:auto;
-  margin-left:-8px;   /* move a touch left */
-  filter:grayscale(1) brightness(1.2) contrast(1.2);
-}
 
 /* Header */
 .site-header{
@@ -93,6 +84,22 @@ body{
 }
 .card.soft{background:var(--glass-soft)}
 
+/* --- NOW title row: logo snug to the left of text --- */
+.now-title-row{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  position:relative;
+  margin-bottom:12px;
+}
+.now-title-logo{
+  height:64px;
+  width:auto;
+  margin-left:-12px;            /* nudge logo slightly left, like your mock */
+  filter:grayscale(1) brightness(1.2) contrast(1.2);
+}
+.now-title-text{margin:0}
+
 /* NOW single card */
 .now-card{padding:26px}
 .now-body{max-width:100%}
@@ -129,5 +136,5 @@ html{scroll-behavior:smooth}
   .xp-card{min-height:auto}
   .hero h1{font-size:40px}
   .card{padding:18px}
-  .title-logo{height:56px;margin-left:-6px}
+  .now-title-logo{height:56px;margin-left:-8px}
 }
