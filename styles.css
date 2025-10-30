@@ -75,7 +75,7 @@ body{
 
 /* Mobile */
 @media(max-width:960px){
-.hero h1{font-size:40px}
-.btn{min-width:140px}
-.skills-grid{justify-content:center}
+  .hero h1{font-size:40px}
+  .btn{min-width:140px}
+  .skills-grid{justify-content:center}
 }
