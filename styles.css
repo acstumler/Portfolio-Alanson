@@ -94,9 +94,9 @@ body{
 .xp-grid-3{
   display:flex;
   flex-direction:column;
-  gap:24px;      /* equal space between cards */
+  gap:24px;
 }
-.xp-card{margin:0} /* rely on gap for spacing */
+.xp-card{margin:0}
 
 /* Reveal */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
