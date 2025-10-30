@@ -1,5 +1,5 @@
 const y=document.getElementById("y");
-if(y){y.textContent=new Date().getFullYear()}
+if(y){y.textContent=new Date().getFullYear();}
 
 const io=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
