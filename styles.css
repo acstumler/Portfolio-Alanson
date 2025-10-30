@@ -60,6 +60,15 @@ body{
 .skills-grid{display:flex;flex-wrap:wrap;gap:10px;}
 .skills-grid span{background:rgba(255,255,255,.08);border:1px solid var(--hair);border-radius:20px;padding:8px 14px;font-size:14px;color:var(--muted);white-space:nowrap;}
 
+/* NOW */
+.now-card{padding:26px}
+.now-columns{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:12px 0 8px}
+.now-sub{font-size:16px;margin:0 0 6px}
+.cta.right{display:flex;justify-content:flex-end}
+
+/* Bottom-right placement for brochure button inside NOW card */
+.brochure-btn{display:flex;justify-content:flex-end;margin-top:24px}
+
 /* Reveal */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:none}
