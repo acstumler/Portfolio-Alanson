@@ -84,20 +84,16 @@ body{
 }
 .card.soft{background:var(--glass-soft)}
 
-/* --- NOW title row: logo snug to the left of text --- */
+/* --- NOW title row ---
+   Logo sits slightly outside the card edge to the left, aligned with the title baseline. */
 .now-title-row{
   display:flex;
   align-items:center;
   gap:12px;
-  position:relative;
   margin-bottom:12px;
 }
-.now-title-logo{
-  height:64px;
-  width:auto;
-  margin-left:-12px;            /* nudge logo slightly left, like your mock */
-  filter:grayscale(1) brightness(1.2) contrast(1.2);
-}
+.outside-left{position:relative;left:-8px}   /* pushes whole row 8px left of container/card */
+.now-title-logo{height:64px;width:auto;filter:grayscale(1) brightness(1.2) contrast(1.2)}
 .now-title-text{margin:0}
 
 /* NOW single card */
@@ -105,23 +101,17 @@ body{
 .now-body{max-width:100%}
 .now-columns{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:12px 0 8px}
 .now-sub{font-size:16px;margin:0 0 6px}
-/* right-aligned CTA inside card */
 .cta.right{display:flex;justify-content:flex-end}
 
 /* Experience */
 .list{margin:0;padding-left:18px}
 .list li{margin:8px 0}
-.xp-grid-3{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:24px;
-  align-items:stretch;
-}
+.xp-grid-3{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;align-items:stretch}
 .xp-card{display:flex;flex-direction:column;height:100%;min-height:420px}
 .xp-card .xp-body{margin-top:10px}
 .mt12{margin-top:12px}
 
-/* Footer etc. */
+/* Footer, reveal */
 .center{text-align:center}
 .fineprint{opacity:.9;text-align:center;margin-top:14px;font-size:14px;color:var(--muted)}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
@@ -136,5 +126,6 @@ html{scroll-behavior:smooth}
   .xp-card{min-height:auto}
   .hero h1{font-size:40px}
   .card{padding:18px}
-  .now-title-logo{height:56px;margin-left:-8px}
+  .now-title-logo{height:56px}
+  .outside-left{left:0}
 }
