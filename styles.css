@@ -36,6 +36,11 @@ body{
 .section-head h2{font-size:28px;margin:0;color:var(--text)}
 .section-line{height:1px;background:linear-gradient(90deg,transparent,var(--hair),transparent);flex:1}
 
+/* Title with logo */
+.brand-title{gap:12px}
+.title-logo{height:28px;width:auto;filter:grayscale(1) brightness(1.2) contrast(1.2)}
+
+/* Header */
 .site-header{
   position:sticky;top:0;z-index:40;
   background:linear-gradient(180deg,rgba(10,10,12,.86),rgba(10,10,12,.6));
@@ -53,11 +58,13 @@ body{
 .nav a{color:var(--text);text-decoration:none;margin:0 12px;opacity:.98}
 .nav a:hover{opacity:1}
 
+/* Buttons */
 .btn{display:inline-block;border:1px solid transparent;border-radius:12px;padding:10px 16px;font-weight:600;text-decoration:none;color:var(--text)}
 .btn.primary{background:rgba(255,255,255,.16);border-color:var(--hair);box-shadow:0 12px 28px rgba(0,0,0,.6),inset 0 0 0 1px rgba(0,0,0,.25)}
 .btn.outline{border:1px solid var(--hair);background:transparent}
 .btn.ghost{background:transparent;border:1px solid transparent}
 
+/* Hero */
 .hero{padding:110px 0 54px;text-align:center}
 .hero-inner{display:flex;gap:28px;align-items:center;justify-content:center;flex-wrap:wrap}
 .headshot{
@@ -70,6 +77,7 @@ body{
 .lede{max-width:760px;margin:0 auto 18px;color:var(--muted)}
 .cta a{margin:0 8px 10px 0}
 
+/* Cards */
 .grid.two{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .card{
   border:1px solid var(--hair);
@@ -80,53 +88,55 @@ body{
 }
 .card.soft{background:var(--glass-soft)}
 
+/* NOW single card */
+.now-card{padding:26px}
+.now-body{max-width:100%}
+.now-columns{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:12px 0 8px}
+.now-sub{font-size:16px;margin:0 0 6px}
+.now-meta{display:flex;justify-content:space-between;opacity:.95;margin:10px 0 8px}
+
+/* Preview/logo (kept styles used elsewhere) */
 .preview{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:260px}
 .logo{max-width:220px;filter:grayscale(100%) brightness(1.2) contrast(1.2)}
 .preview-meta{display:flex;justify-content:space-between;opacity:.95;margin-top:12px;width:100%}
 
+/* Text bits */
 p,li,.meta,.stat-label,.text-link{color:var(--text)}
 .text-link{opacity:.95;border-bottom:1px solid var(--hair);text-decoration:none}
 .text-link:hover{opacity:1}
 
+/* Pills and stats */
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 8px;padding:0;list-style:none}
 .chips li{padding:8px 12px;border-radius:22px;border:1px solid var(--hair);background:rgba(255,255,255,.10)}
-
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .stat{padding:16px;border-radius:14px;border:1px solid var(--hair);background:rgba(255,255,255,.10)}
 .stat-num{font-weight:700;font-size:22px;color:var(--text)}
 .stat-label{font-size:14px;color:var(--muted)}
 
+/* Experience */
 .list{margin:0;padding-left:18px}
 .list li{margin:8px 0}
-
-/* ===== Experience: 3 equal-height cards ===== */
 .xp-grid-3{
   display:grid;
   grid-template-columns:repeat(2,1fr);
   gap:24px;
   align-items:stretch;
 }
-.xp-card{
-  display:flex;
-  flex-direction:column;
-  height:100%;
-  min-height:420px;   /* equal height target on desktop */
-}
+.xp-card{display:flex;flex-direction:column;height:100%;min-height:420px}
 .xp-card .xp-body{margin-top:10px}
 .mt12{margin-top:12px}
 
-/* Footer etc. */
+/* Footer, reveal */
 .center{text-align:center}
 .fineprint{opacity:.9;text-align:center;margin-top:14px;font-size:14px;color:var(--muted)}
-
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:none}
-
 html{scroll-behavior:smooth}
 
 /* Mobile */
 @media (max-width:960px){
   .grid.two{grid-template-columns:1fr}
+  .now-columns{grid-template-columns:1fr}
   .xp-grid-3{grid-template-columns:1fr}
   .xp-card{min-height:auto}
   .hero h1{font-size:40px}
