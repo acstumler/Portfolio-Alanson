@@ -1,11 +1,11 @@
 :root{
   --bg:#050506;
   --bg2:#0a0a0c;
-  --glass:#0c0d11e6;        /* dark, translucent */
+  --glass:#0c0d11e6;
   --glass-soft:#0c0d11cc;
-  --text:#f5f6f7;           /* white text */
-  --muted:#d0d2d6;          /* light gray text */
-  --hair:#ffffff22;         /* thin white lines */
+  --text:#f5f6f7;
+  --muted:#d0d2d6;
+  --hair:#ffffff22;
   --white:255,255,255
 }
 
@@ -20,14 +20,17 @@ body{
 .backdrop{
   position:fixed;inset:0;z-index:-3;
   background:url("assets/Marble.png") center/cover no-repeat fixed;
-  filter:grayscale(100%) brightness(.4) contrast(1.05); /* dark marble */
+  /* make the marble visible yet dark */
+  filter:grayscale(100%) brightness(.68) contrast(1.35);
+  opacity:.95;
 }
 
 .scrim{
   position:fixed;inset:0;z-index:-2;
+  /* lighter overlay so marble shows through */
   background:
-    radial-gradient(1200px 520px at 50% -140px,rgba(0,0,0,.55),transparent 60%),
-    linear-gradient(180deg,rgba(0,0,0,.66),rgba(0,0,0,.66));
+    radial-gradient(1200px 520px at 50% -140px,rgba(0,0,0,.40),transparent 60%),
+    linear-gradient(180deg,rgba(0,0,0,.48),rgba(0,0,0,.48));
 }
 
 .container{max-width:1120px;margin:0 auto;padding:0 22px}
@@ -54,11 +57,7 @@ body{
 .nav a:hover{opacity:1}
 
 .btn{display:inline-block;border:1px solid transparent;border-radius:12px;padding:10px 16px;font-weight:600;text-decoration:none;color:var(--text)}
-.btn.primary{
-  background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.10));
-  border-color:var(--hair);
-  box-shadow:0 12px 28px rgba(0,0,0,.6),inset 0 0 0 1px rgba(0,0,0,.25)
-}
+.btn.primary{background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.10));border-color:var(--hair);box-shadow:0 12px 28px rgba(0,0,0,.6),inset 0 0 0 1px rgba(0,0,0,.25)}
 .btn.outline{border:1px solid var(--hair);background:transparent}
 .btn.ghost{background:transparent;border:1px solid transparent}
 
@@ -66,13 +65,11 @@ body{
 .hero-inner{display:flex;gap:28px;align-items:center;justify-content:center;flex-wrap:wrap}
 .headshot{
   width:132px;height:132px;border-radius:50%;
-  object-fit:cover;
-  border:1px solid #ffffff55;
-  box-shadow:0 14px 36px rgba(0,0,0,.7);
-  background:#ffffff12
+  object-fit:cover;border:1px solid #ffffff55;
+  box-shadow:0 14px 36px rgba(0,0,0,.7);background:#ffffff12
 }
 .hero h1{font-size:48px;margin:6px 0 2px}
-.tagline{font-weight:600;opacity:1;margin:0 0 8px}
+.tagline{font-weight:600;margin:0 0 8px}
 .lede{max-width:760px;margin:0 auto 18px;color:var(--muted)}
 .cta a{margin:0 8px 10px 0}
 
