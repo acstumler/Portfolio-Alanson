@@ -88,12 +88,13 @@ body{
 .now-section{position:relative}
 .title-logo-out{
   position:absolute;
-  left:-20px;      /* pulled in from the edge */
-  top:-8px;        /* aligns with title baseline */
-  height:96px;     /* comfortable next to h2 */
+  left: 8px;        /* inside the white-box area you drew */
+  top: -36px;       /* align vertically with the title */
+  height: 144px;    /* 1.5x larger than the previous ~96px */
   width:auto;
   filter:grayscale(1) brightness(1.2) contrast(1.2);
   pointer-events:none;
+  z-index:1;
 }
 .now-card{padding:26px}
 .now-body{max-width:100%}
@@ -130,5 +131,5 @@ html{scroll-behavior:smooth}
   .xp-card{min-height:auto}
   .hero h1{font-size:40px}
   .card{padding:18px}
-  .title-logo-out{left:0; top:-40px; height:72px}
+  .title-logo-out{left:0; top:-40px; height:100px}
 }
