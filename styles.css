@@ -99,12 +99,23 @@ p,li,.meta,.stat-label,.text-link{color:var(--text)}
 .list{margin:0;padding-left:18px}
 .list li{margin:8px 0}
 
-/* Experience: no inner scroll; cards grow to content */
-.xp-grid{align-items:start}
-.xp-card{display:flex;flex-direction:column}
+/* ===== Experience: 3 equal-height cards ===== */
+.xp-grid-3{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:24px;
+  align-items:stretch;
+}
+.xp-card{
+  display:flex;
+  flex-direction:column;
+  height:100%;
+  min-height:420px;   /* equal height target on desktop */
+}
 .xp-card .xp-body{margin-top:10px}
+.mt12{margin-top:12px}
 
-/* Mobile UX */
+/* Footer etc. */
 .center{text-align:center}
 .fineprint{opacity:.9;text-align:center;margin-top:14px;font-size:14px;color:var(--muted)}
 
@@ -113,9 +124,11 @@ p,li,.meta,.stat-label,.text-link{color:var(--text)}
 
 html{scroll-behavior:smooth}
 
+/* Mobile */
 @media (max-width:960px){
   .grid.two{grid-template-columns:1fr}
+  .xp-grid-3{grid-template-columns:1fr}
+  .xp-card{min-height:auto}
   .hero h1{font-size:40px}
   .card{padding:18px}
-  .xp-card{margin-bottom:6px}
 }
