@@ -88,9 +88,9 @@ body{
 .now-section{position:relative}
 .title-logo-out{
   position:absolute;
-  left:-84px;               /* sits outside to the left */
-  top:-6px;
-  height:120px;
+  left:-20px;      /* pulled in from the edge */
+  top:-8px;        /* aligns with title baseline */
+  height:96px;     /* comfortable next to h2 */
   width:auto;
   filter:grayscale(1) brightness(1.2) contrast(1.2);
   pointer-events:none;
@@ -130,5 +130,5 @@ html{scroll-behavior:smooth}
   .xp-card{min-height:auto}
   .hero h1{font-size:40px}
   .card{padding:18px}
-  .title-logo-out{left:0;top:-60px;height:80px}
+  .title-logo-out{left:0; top:-40px; height:72px}
 }
