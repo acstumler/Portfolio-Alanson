@@ -36,6 +36,14 @@ body{
 .section-head h2{font-size:28px;margin:0;color:var(--text)}
 .section-line{height:1px;background:linear-gradient(90deg,transparent,var(--hair),transparent);flex:1}
 
+/* Title with logo inline */
+.brand-title{gap:14px}
+.title-logo{
+  height:64px;        /* sits comfortably next to the title */
+  width:auto;
+  filter:grayscale(1) brightness(1.2) contrast(1.2);
+}
+
 /* Header */
 .site-header{
   position:sticky;top:0;z-index:40;
@@ -85,17 +93,6 @@ body{
 .card.soft{background:var(--glass-soft)}
 
 /* NOW single card */
-.now-section{position:relative}
-.title-logo-out{
-  position:absolute;
-  left: 8px;        /* inside the white-box area you drew */
-  top: -36px;       /* align vertically with the title */
-  height: 144px;    /* 1.5x larger than the previous ~96px */
-  width:auto;
-  filter:grayscale(1) brightness(1.2) contrast(1.2);
-  pointer-events:none;
-  z-index:1;
-}
 .now-card{padding:26px}
 .now-body{max-width:100%}
 .now-columns{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:12px 0 8px}
@@ -131,5 +128,5 @@ html{scroll-behavior:smooth}
   .xp-card{min-height:auto}
   .hero h1{font-size:40px}
   .card{padding:18px}
-  .title-logo-out{left:0; top:-40px; height:100px}
+  .title-logo{height:56px}
 }
