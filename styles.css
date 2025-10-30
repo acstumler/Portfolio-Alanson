@@ -77,8 +77,10 @@ body{
 .btn.ghost{background:transparent;border:1px solid transparent}
 
 /* Hero */
-.hero{padding:110px 0 54px;text-align:center}
-.hero-inner{display:flex;gap:28px;align-items:center;justify-content:center;flex-wrap:wrap}
+.hero{padding:110px 0 54px}
+.hero-inner{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+.hero-left{justify-content:flex-start}
+.hero-left .hero-copy{text-align:left;max-width:640px}
 .headshot{
   width:132px;height:132px;border-radius:50%;
   object-fit:cover;border:1px solid #ffffff55;
@@ -86,8 +88,10 @@ body{
 }
 .hero h1{font-size:48px;margin:6px 0 2px}
 .tagline{font-weight:600;margin:0 0 8px}
-.lede{max-width:760px;margin:0 auto 18px;color:var(--muted)}
-.cta a{margin:0 8px 10px 0}
+.tagline.strong{opacity:.95}
+.lede{max-width:720px;margin:0 0 18px;color:var(--muted)}
+.cta{display:flex;gap:10px;flex-wrap:wrap}
+.cta-left{justify-content:flex-start}
 
 /* Cards */
 .card{
@@ -141,10 +145,10 @@ html{scroll-behavior:smooth}
 
 /* Mobile */
 @media (max-width:960px){
-  .now-columns{grid-template-columns:1fr}
-  .xp-grid-3{grid-template-columns:1fr}
   .hero h1{font-size:40px}
   .card{padding:18px}
   .skills-grid{justify-content:center}
+  .now-columns{grid-template-columns:1fr}
+  .xp-grid-3{grid-template-columns:1fr}
   .backdrop{filter:grayscale(70%) brightness(1.0) contrast(1.25);opacity:1}
 }
