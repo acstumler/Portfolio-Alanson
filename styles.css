@@ -32,13 +32,9 @@ body{
 
 .container{max-width:1120px;margin:0 auto;padding:0 22px}
 .section{padding:76px 0}
-.section-head{display:flex;align-items:center;gap:16px;margin-bottom:18px}
+.section-head{display:flex;align-items:center;gap:16px;margin-bottom:12px}
 .section-head h2{font-size:28px;margin:0;color:var(--text)}
 .section-line{height:1px;background:linear-gradient(90deg,transparent,var(--hair),transparent);flex:1}
-
-/* Title with logo — 5x larger */
-.brand-title{gap:14px}
-.title-logo{height:140px;width:auto;filter:grayscale(1) brightness(1.2) contrast(1.2)} /* was 28px */
 
 /* Header */
 .site-header{
@@ -89,16 +85,22 @@ body{
 .card.soft{background:var(--glass-soft)}
 
 /* NOW single card */
+.now-section{position:relative}
+.title-logo-out{
+  position:absolute;
+  left:-84px;               /* sits outside to the left */
+  top:-6px;
+  height:120px;
+  width:auto;
+  filter:grayscale(1) brightness(1.2) contrast(1.2);
+  pointer-events:none;
+}
 .now-card{padding:26px}
 .now-body{max-width:100%}
 .now-columns{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:12px 0 8px}
 .now-sub{font-size:16px;margin:0 0 6px}
-
-/* Footer row: role left, date + button right */
-.now-footer{display:flex;align-items:center;justify-content:space-between;margin-top:12px}
-.now-left{opacity:.95}
-.now-right{display:flex;align-items:center;gap:16px}
-.now-date{opacity:.95}
+/* right-aligned CTA inside card */
+.cta.right{display:flex;justify-content:flex-end}
 
 /* Experience */
 .list{margin:0;padding-left:18px}
@@ -128,5 +130,5 @@ html{scroll-behavior:smooth}
   .xp-card{min-height:auto}
   .hero h1{font-size:40px}
   .card{padding:18px}
-  .title-logo{height:88px}
+  .title-logo-out{left:0;top:-60px;height:80px}
 }
