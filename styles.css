@@ -2,7 +2,7 @@
   --bg:#050506;
   --bg2:#0a0a0c;
 
-  /* 70% transparency (alpha ≈ 0.30) frosted glass */
+  /* 70% transparency frosted glass */
   --glass: rgba(12,13,17,.30);
   --glass-soft: rgba(12,13,17,.24);
 
@@ -23,14 +23,11 @@ body{
 .backdrop{
   position:fixed;inset:0;z-index:-3;
   background:url("assets/Marble.png") center/cover no-repeat fixed;
-  /* more visible marble, still dark and neutral */
   filter:grayscale(100%) brightness(.80) contrast(1.25);
   opacity:.98;
 }
-
 .scrim{
   position:fixed;inset:0;z-index:-2;
-  /* lighter overlay so marble comes through */
   background:
     radial-gradient(1200px 520px at 50% -140px,rgba(0,0,0,.30),transparent 60%),
     linear-gradient(180deg,rgba(0,0,0,.40),rgba(0,0,0,.40));
@@ -60,12 +57,7 @@ body{
 .nav a:hover{opacity:1}
 
 .btn{display:inline-block;border:1px solid transparent;border-radius:12px;padding:10px 16px;font-weight:600;text-decoration:none;color:var(--text)}
-/* neutral, no blue hue */
-.btn.primary{
-  background:rgba(255,255,255,.16);
-  border-color:var(--hair);
-  box-shadow:0 12px 28px rgba(0,0,0,.6),inset 0 0 0 1px rgba(0,0,0,.25)
-}
+.btn.primary{background:rgba(255,255,255,.16);border-color:var(--hair);box-shadow:0 12px 28px rgba(0,0,0,.6),inset 0 0 0 1px rgba(0,0,0,.25)}
 .btn.outline{border:1px solid var(--hair);background:transparent}
 .btn.ghost{background:transparent;border:1px solid transparent}
 
@@ -81,6 +73,7 @@ body{
 .lede{max-width:760px;margin:0 auto 18px;color:var(--muted)}
 .cta a{margin:0 8px 10px 0}
 
+/* Layout */
 .grid.two{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .card{
   border:1px solid var(--hair);
@@ -110,6 +103,13 @@ p,li,.meta,.stat-label,.text-link{color:var(--text)}
 .list{margin:0;padding-left:18px}
 .list li{margin:8px 0}
 
+/* Expanded Experience: fixed card heights with scrollable bodies */
+.xp-grid{align-items:start}
+.xp-card{display:flex;flex-direction:column;min-height:260px;max-height:320px}
+.xp-card .xp-body{margin-top:10px;overflow:auto;scrollbar-width:thin}
+.xp-card .xp-body::-webkit-scrollbar{height:8px;width:8px}
+.xp-card .xp-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18);border-radius:8px}
+
 .center{text-align:center}
 .fineprint{opacity:.9;text-align:center;margin-top:14px;font-size:14px;color:var(--muted)}
 
@@ -121,4 +121,5 @@ html{scroll-behavior:smooth}
 @media (max-width:960px){
   .grid.two{grid-template-columns:1fr}
   .hero h1{font-size:40px}
+  .xp-card{max-height:none}
 }
