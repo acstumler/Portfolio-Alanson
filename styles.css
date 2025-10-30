@@ -1,11 +1,8 @@
 :root{
   --bg:#050506;
   --bg2:#0a0a0c;
-
-  /* 70% transparency frosted glass */
   --glass: rgba(12,13,17,.30);
   --glass-soft: rgba(12,13,17,.24);
-
   --text:#f6f7f8;
   --muted:#dde0e3;
   --hair:rgba(255,255,255,.28);
@@ -73,7 +70,6 @@ body{
 .lede{max-width:760px;margin:0 auto 18px;color:var(--muted)}
 .cta a{margin:0 8px 10px 0}
 
-/* Layout */
 .grid.two{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .card{
   border:1px solid var(--hair);
@@ -103,13 +99,12 @@ p,li,.meta,.stat-label,.text-link{color:var(--text)}
 .list{margin:0;padding-left:18px}
 .list li{margin:8px 0}
 
-/* Expanded Experience: fixed card heights with scrollable bodies */
+/* Experience: no inner scroll; cards grow to content */
 .xp-grid{align-items:start}
-.xp-card{display:flex;flex-direction:column;min-height:260px;max-height:320px}
-.xp-card .xp-body{margin-top:10px;overflow:auto;scrollbar-width:thin}
-.xp-card .xp-body::-webkit-scrollbar{height:8px;width:8px}
-.xp-card .xp-body::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18);border-radius:8px}
+.xp-card{display:flex;flex-direction:column}
+.xp-card .xp-body{margin-top:10px}
 
+/* Mobile UX */
 .center{text-align:center}
 .fineprint{opacity:.9;text-align:center;margin-top:14px;font-size:14px;color:var(--muted)}
 
@@ -121,5 +116,6 @@ html{scroll-behavior:smooth}
 @media (max-width:960px){
   .grid.two{grid-template-columns:1fr}
   .hero h1{font-size:40px}
-  .xp-card{max-height:none}
+  .card{padding:18px}
+  .xp-card{margin-bottom:6px}
 }
