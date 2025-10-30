@@ -98,6 +98,11 @@ body{
 }
 .xp-card{margin:0}
 
+/* Contact spacing tweaks */
+#contact .contact-intro{margin-top:8px;margin-bottom:14px;line-height:1.6}
+#contact .contact-cta{margin-top:12px;margin-bottom:8px}
+.fineprint{opacity:.9;margin-top:16px;font-size:14px}
+
 /* Reveal */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:none}
