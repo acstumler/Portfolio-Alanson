@@ -63,7 +63,8 @@ body{
 .headshot{width:132px;height:132px;border-radius:50%;object-fit:cover;border:1px solid #ffffff55;box-shadow:0 14px 36px rgba(0,0,0,.7)}
 .hero h1{font-size:48px;margin:6px 0 2px}
 .tagline{font-weight:500;margin:0 0 8px}
-.lede{max-width:720px;margin:0 0 18px;color:var(--muted);font-size:18px}
+.lede{max-width:720px;margin:0 0 8px;color:var(--muted);font-size:18px}
+.edu{margin:2px 0 16px;color:var(--muted);font-size:15px}
 .cta{display:flex;gap:14px;flex-wrap:wrap}
 .cta-left{justify-content:flex-start}
 
