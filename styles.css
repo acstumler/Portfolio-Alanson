@@ -76,7 +76,11 @@ body{
 
 /* NOW */
 .now-card{padding:26px}
+/* Old two-column layout disabled
 .now-columns{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:12px 0 8px}
+*/
+.now-stacked{display:flex;flex-direction:column;gap:26px;margin:16px 0}
+.now-block{border-top:1px solid var(--hair);padding-top:12px}
 .now-sub{font-size:16px;margin:0 0 6px}
 .cta.right{display:flex;justify-content:flex-end}
 .brochure-btn{display:flex;justify-content:flex-end;margin-top:24px}
