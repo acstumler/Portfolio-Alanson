@@ -80,7 +80,7 @@ body{
 .now-block{border-top:1px solid var(--hair);padding-top:12px}
 .now-sub{font-size:16px;margin:0 0 10px}
 
-/* Feature rows (Option 1) */
+/* Feature rows (reusable) */
 .feature-group{display:flex;flex-direction:column;gap:18px}
 .feature-item h4{margin:0;font-weight:600}
 .feature-item p{margin:4px 0 0;color:var(--muted);line-height:1.55}
@@ -92,8 +92,9 @@ body{
 /* EXPERIENCE */
 .xp-grid-3{display:flex;flex-direction:column;gap:24px}
 .xp-card{margin:0}
+.xp-body .feature-group{margin-top:10px}
 
-/* Contact spacing tweaks */
+/* Contact */
 #contact .contact-intro{margin-top:8px;margin-bottom:14px;line-height:1.6}
 #contact .contact-cta{margin-top:12px;margin-bottom:8px}
 .fineprint{opacity:.9;margin-top:16px;font-size:14px}
@@ -102,7 +103,7 @@ body{
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:none}
 
-/* ---------- Mobile background fixes ---------- */
+/* Mobile background fixes */
 @media (max-width:960px){
   .backdrop{
     background:url("assets/Marble.png") center top / cover no-repeat; /* no 'fixed' */
