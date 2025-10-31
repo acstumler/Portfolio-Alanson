@@ -7,7 +7,6 @@
   --hair:rgba(255,255,255,.28);
 }
 
-/* Scrollbar */
 *{box-sizing:border-box;scrollbar-width:thin;scrollbar-color:#8e8e93 transparent;}
 ::-webkit-scrollbar{width:10px;height:10px}
 ::-webkit-scrollbar-track{background:transparent}
@@ -21,7 +20,6 @@ body{
   background:linear-gradient(180deg,var(--bg),var(--bg2));
 }
 
-/* Background layers */
 .backdrop{
   position:fixed;inset:0;z-index:-3;
   background:url("assets/Marble.png") center/cover no-repeat fixed;
@@ -33,14 +31,12 @@ body{
   background:radial-gradient(1200px 520px at 50% -140px,rgba(0,0,0,.28),transparent 60%),linear-gradient(180deg,rgba(0,0,0,.34),rgba(0,0,0,.34));
 }
 
-/* Layout */
 .container{max-width:1120px;margin:0 auto;padding:0 22px}
 .section{padding:76px 0}
 .section-head{display:flex;align-items:center;gap:16px;margin-bottom:12px}
 .section-head h2{font-size:28px;margin:0;color:var(--text)}
 .section-line{height:1px;background:linear-gradient(90deg,transparent,var(--hair),transparent);flex:1}
 
-/* Header */
 .site-header{position:sticky;top:0;z-index:40;background:linear-gradient(180deg,rgba(10,10,12,.86),rgba(10,10,12,.6));-webkit-backdrop-filter:blur(16px) saturate(180%);backdrop-filter:blur(16px) saturate(180%);border-bottom:1px solid var(--hair);}
 .header-inner{display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 10px}
 .site-header .container{max-width:1320px}
@@ -50,59 +46,52 @@ body{
 .nav a:visited{color:var(--text)}
 .nav-right{margin-left:auto}
 
-/* Buttons */
 .btn{display:inline-block;text-decoration:none;border-radius:12px;padding:10px 18px;font-weight:600;color:var(--text);border:1px solid var(--hair);background:rgba(255,255,255,.08);transition:all .25s ease;min-width:170px;text-align:center}
 .btn:hover{background:rgba(255,255,255,.16)}
 .btn.uniform{background:rgba(255,255,255,.08)}
 
-/* Hero */
 .hero{padding:110px 0 54px}
 .hero-inner{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
 .hero-left{justify-content:flex-start}
 .hero-left .hero-copy{text-align:left;max-width:640px}
 .headshot{width:132px;height:132px;border-radius:50%;object-fit:cover;border:1px solid #ffffff55;box-shadow:0 14px 36px rgba(0,0,0,.7)}
 .hero h1{font-size:48px;margin:6px 0 2px}
-.tagline{font-weight:600;margin:0 0 8px}
+.tagline{font-weight:500;margin:0 0 8px}
 .lede{max-width:720px;margin:0 0 18px;color:var(--muted);font-size:18px}
 .cta{display:flex;gap:14px;flex-wrap:wrap}
 .cta-left{justify-content:flex-start}
 
-/* Cards */
 .card{border:1px solid var(--hair);border-radius:16px;background:var(--glass);padding:22px;-webkit-backdrop-filter:blur(28px) saturate(180%);backdrop-filter:blur(28px) saturate(180%);box-shadow:0 18px 44px rgba(0,0,0,.7)}
 .about-card p{margin-bottom:14px;color:var(--muted);line-height:1.7}
 .skills-card{margin-top:24px}
 .skills-grid{display:flex;flex-wrap:wrap;gap:10px}
 .skills-grid span{background:rgba(255,255,255,.08);border:1px solid var(--hair);border-radius:20px;padding:8px 14px;font-size:14px;color:var(--muted);white-space:nowrap}
 
-/* NOW */
 .now-card{padding:26px}
-/* Old two-column layout disabled
-.now-columns{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:12px 0 8px}
-*/
 .now-stacked{display:flex;flex-direction:column;gap:26px;margin:16px 0}
 .now-block{border-top:1px solid var(--hair);padding-top:12px}
-.now-sub{font-size:16px;margin:0 0 6px}
+.now-sub{font-size:16px;margin:0 0 10px}
+
+.feature-group{display:flex;flex-direction:column;gap:18px}
+.feature-item h4{margin:0;font-weight:600}
+.feature-item p{margin:4px 0 0;color:var(--muted);line-height:1.55}
+
 .cta.right{display:flex;justify-content:flex-end}
 .brochure-btn{display:flex;justify-content:flex-end;margin-top:24px}
 
-/* EXPERIENCE */
 .xp-grid-3{display:flex;flex-direction:column;gap:24px}
 .xp-card{margin:0}
 
-/* Contact spacing tweaks */
 #contact .contact-intro{margin-top:8px;margin-bottom:14px;line-height:1.6}
 #contact .contact-cta{margin-top:12px;margin-bottom:8px}
 .fineprint{opacity:.9;margin-top:16px;font-size:14px}
 
-/* Reveal */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 .reveal.visible{opacity:1;transform:none}
 
-/* ---------- Mobile background fixes ---------- */
 @media (max-width:960px){
-  /* Avoid iOS fixed-attachment issues: use scroll background and soften contrast */
   .backdrop{
-    background:url("assets/Marble.png") center top / cover no-repeat; /* no 'fixed' */
+    background:url("assets/Marble.png") center top / cover no-repeat;
     filter:grayscale(65%) brightness(.98) contrast(1.08);
     opacity:.94;
   }
@@ -110,7 +99,6 @@ body{
     background:radial-gradient(900px 420px at 50% -120px,rgba(0,0,0,.18),transparent 60%),
                linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.18));
   }
-
   .hero h1{font-size:40px}
   .btn{min-width:140px}
   .skills-grid{justify-content:center}
