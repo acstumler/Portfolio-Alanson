@@ -1,0 +1,12 @@
+# Project-level pnpm policy.
+
+# Supply-chain safety: refuse to install any package version published less than
+# 3 days (4320 minutes) ago. Applies to future resolutions, not the current lockfile.
+minimumReleaseAge: 4320
+
+# Dependency lifecycle (build) scripts. Each dependency that requests one must be
+# explicitly decided. sharp is denied: this site uses no next/image, and Vercel
+# handles image optimization server-side, so the local sharp native binary is not
+# needed. Flip to true only with a justified future need.
+allowBuilds:
+  sharp: false
