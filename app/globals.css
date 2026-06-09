@@ -99,3 +99,38 @@ svg {
   line-height: var(--leading-display);
   color: var(--ink);
 }
+
+/* ============================================================
+   PHASE 2 — structural legibility only.
+   Vertical rhythm, list resets, and the two-line name so the content
+   reads cleanly for review. The full visual system (palette use, grain,
+   type scale, multi-column layout, hero composition, hairlines) is Phase 3.
+   ============================================================ */
+.section { padding-block: 56px; }
+.hero { padding-block: 80px 56px; }
+
+/* vertical rhythm between blocks */
+.hero__inner > * + *,
+.section .container > * + * { margin-top: 18px; }
+.believe__body > p + p { margin-top: 14px; }
+p { max-width: var(--measure); }
+
+/* hero name on two lines (scaled in Phase 3) */
+.hero__name span { display: block; }
+
+/* lists: strip default bullets, add quiet rhythm */
+.do__list,
+.bg__list,
+.bg__skills,
+.bg__proof { list-style: none; }
+.do__item { margin-top: 14px; }
+.bg__entry + .bg__entry { margin-top: 16px; }
+.bg__skills li,
+.bg__proof li { margin-top: 4px; }
+.bg__col + .bg__col { margin-top: 28px; }
+.bg__col-head { margin-bottom: 10px; }
+
+/* inline links read as links while unstyled */
+.hero__contact-link,
+.contact__link,
+.bg__brochure { text-decoration: underline; }
