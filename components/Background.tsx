@@ -1,3 +1,4 @@
+import { Reveal } from "@/components/Reveal";
 import { SITE } from "@/lib/site";
 
 const EXPERIENCE = [
@@ -40,56 +41,58 @@ export function Background() {
   return (
     <section id="background" className="section section--background" aria-labelledby="background-label">
       <div className="container">
-        <p className="mono section__label" id="background-label">003 / Background</p>
+        <Reveal>
+          <p className="mono section__label" id="background-label">003 / Background</p>
 
-        <div className="bg__grid">
-          <div className="bg__col bg__col--experience">
-            <h3 className="mono bg__col-head">Experience</h3>
-            <ul className="bg__list">
-              {EXPERIENCE.map((entry) => (
-                <li key={entry.role} className="bg__entry">
-                  <p className="mono bg__date">{entry.date}</p>
-                  <p className="bg__role">{entry.role}</p>
-                  <p className="bg__desc">
-                    {entry.desc}
-                    {"brochure" in entry ? (
-                      <>
-                        {" "}
-                        <a
-                          className="bg__brochure"
-                          href={entry.brochure}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          LumiLedger Brochure ↗
-                        </a>
-                      </>
-                    ) : null}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <div className="bg__grid">
+            <div className="bg__col bg__col--experience">
+              <h3 className="mono bg__col-head">Experience</h3>
+              <ul className="bg__list">
+                {EXPERIENCE.map((entry) => (
+                  <li key={entry.role} className="bg__entry">
+                    <p className="mono bg__date">{entry.date}</p>
+                    <p className="bg__role">{entry.role}</p>
+                    <p className="bg__desc">
+                      {entry.desc}
+                      {"brochure" in entry ? (
+                        <>
+                          {" "}
+                          <a
+                            className="bg__brochure"
+                            href={entry.brochure}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            LumiLedger Brochure ↗
+                          </a>
+                        </>
+                      ) : null}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          <div className="bg__col bg__col--skills">
-            <h3 className="mono bg__col-head">Skills</h3>
-            <ul className="bg__skills">
-              {SKILLS.map((skill) => (
-                <li key={skill}>{skill}</li>
-              ))}
-            </ul>
-          </div>
+            <div className="bg__col bg__col--skills">
+              <h3 className="mono bg__col-head">Skills</h3>
+              <ul className="bg__skills">
+                {SKILLS.map((skill) => (
+                  <li key={skill}>{skill}</li>
+                ))}
+              </ul>
+            </div>
 
-          <div className="bg__col bg__col--proof">
-            <h3 className="mono bg__col-head">Proof</h3>
-            <ul className="bg__proof">
-              {PROOF.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-            {/* Room for a first client or result here later. Do not manufacture metrics. */}
+            <div className="bg__col bg__col--proof">
+              <h3 className="mono bg__col-head">Proof</h3>
+              <ul className="bg__proof">
+                {PROOF.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+              {/* Room for a first client or result here later. Do not manufacture metrics. */}
+            </div>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );
