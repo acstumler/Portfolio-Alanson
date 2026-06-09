@@ -12,15 +12,10 @@ export function Contact() {
         </p>
 
         <p className="contact__cta-line">
-          If that’s the position you want to be in, let’s talk.{" "}
-          <a
-            className="contact__link"
-            href={SITE.links.contact}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Get in touch ↗
-          </a>
+          If that’s the position you want to be in, let’s talk.
+        </p>
+        <p className="contact__email">
+          <a className="contact__link" href={`mailto:${SITE.email}`}>{SITE.email}</a>
         </p>
 
         <p className="mono contact__links">

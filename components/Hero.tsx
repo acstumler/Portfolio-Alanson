@@ -21,7 +21,7 @@ export function Hero() {
             <p className="hero__status-line">
               <span className="hero__dot" aria-hidden="true">●</span> Open to new work
             </p>
-            <a className="hero__contact-link" href="#contact">Get in touch ↗</a>
+            <a className="hero__contact-link" href={`mailto:${SITE.email}`}>Get in touch ↗</a>
           </div>
         </div>
 

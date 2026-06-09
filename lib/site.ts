@@ -5,11 +5,12 @@ export const SITE = {
   title: "Alanson Stumler | Data and AI for operationally complex firms",
   description:
     "Alanson Stumler helps operationally complex firms turn scattered data and undocumented judgment into a foundation they can decide and compete on.",
+  // Primary contact address (shown as text and linked via mailto).
+  email: "acstumler@outlook.com",
   // External links carried over from the live site (unchanged).
   links: {
     linkedin: "https://www.linkedin.com/in/alanson-stumler",
     calendly: "https://calendly.com/alanson-stumler-lumiledger",
-    contact: "https://dot.cards/astumler",
     lumiledgerBrochure: "https://lumiledger-brochure.vercel.app/#wins",
   },
 } as const;
