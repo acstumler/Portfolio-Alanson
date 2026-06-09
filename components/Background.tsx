@@ -42,7 +42,7 @@ export function Background() {
     <section id="background" className="section section--background" aria-labelledby="background-label">
       <div className="container">
         <Reveal>
-          <p className="mono section__label" id="background-label">003 / Background</p>
+          <h2 className="mono section__label" id="background-label">003 / Background</h2>
 
           <div className="bg__grid">
             <div className="bg__col bg__col--experience">

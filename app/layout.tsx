@@ -23,6 +23,19 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE.baseUrl),
   title: SITE.title,
   description: SITE.description,
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    url: SITE.baseUrl,
+    siteName: "Alanson Stumler",
+    title: SITE.title,
+    description: SITE.description,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE.title,
+    description: SITE.description,
+  },
 };
 
 export default function RootLayout({

@@ -6,7 +6,7 @@ export function Contact() {
     <section id="contact" className="section section--contact" aria-labelledby="contact-label">
       <div className="container">
         <Reveal>
-          <p className="mono section__label" id="contact-label">004 / Contact</p>
+          <h2 className="mono section__label" id="contact-label">004 / Contact</h2>
 
           <p className="display contact__closing">
             The firms that get this right won’t be the ones with the most data. They’ll be

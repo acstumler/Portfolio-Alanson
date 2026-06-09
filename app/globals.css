@@ -1,7 +1,8 @@
 /* ============================================================
    DESIGN SYSTEM (locked, monochrome)
-   Phase 3 applies the full visual system: palette, film grain,
-   type scale, and layout. Motion is Phase 4.
+   Palette, film grain, fluid type scale, and layout. Paired with the
+   canvas dot-terrain, SVG grain, and framer-motion reveals plus the
+   node-graph animation. All motion respects prefers-reduced-motion.
    ============================================================ */
 
 :root {
@@ -14,8 +15,8 @@
   /* --- Ink / text --- */
   --ink: #0e0e0d;
   --text: #2c2d2b;
-  --label: #3f403e;
-  --faint: #555654;
+  --label: #34352f;
+  --faint: #3a3b39;
 
   /* --- Type faces (font vars set on <html> by next/font) --- */
   --ff-display: var(--font-display), "Inter Tight", system-ui, -apple-system,
@@ -57,6 +58,7 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   scroll-behavior: smooth;
+  overflow-x: hidden; /* guard against any sub-pixel bleed; safe for top-sticky */
 }
 
 body {
@@ -417,11 +419,11 @@ html.lenis body {
 }
 
 /* ============================================================ RESPONSIVE
-   Layout reflow. Fine polish down to 360px is Phase 5. */
+   Layout reflow from ultrawide down to 360px. */
 @media (max-width: 880px) {
   .bg__grid {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 40px;
   }
   .hero__lower {
     flex-direction: column;
@@ -435,6 +437,30 @@ html.lenis body {
     position: static;
     width: clamp(150px, 42vw, 220px);
     margin-top: 36px;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Header wraps to two rows; nav spans the width with 44px tap targets. */
+  .site-header__inner {
+    flex-wrap: wrap;
+    gap: 2px 16px;
+    padding-block: 6px;
+  }
+  .site-header__nav {
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .site-header__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  /* Hero footer strip stacks instead of stretching across. */
+  .hero__footer {
+    flex-direction: column;
+    gap: 8px;
   }
 }
 

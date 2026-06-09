@@ -28,7 +28,7 @@ export function WhatIDo() {
     <section id="do" className="section section--do" aria-labelledby="do-label">
       <div className="container">
         <Reveal>
-          <p className="mono section__label" id="do-label">002 / What I do</p>
+          <h2 className="mono section__label" id="do-label">002 / What I do</h2>
           <p className="do__lead">
             I work with operationally complex firms on one problem: turning information
             that’s hard to use into a foundation they can decide and compete on.

@@ -5,7 +5,7 @@ export function Believe() {
     <section id="believe" className="section section--believe" aria-labelledby="believe-label">
       <div className="container">
         <Reveal>
-          <p className="mono section__label" id="believe-label">001 / What I believe</p>
+          <h2 className="mono section__label" id="believe-label">001 / What I believe</h2>
           <div className="believe__body">
             <p>
               For most operationally complex businesses, the information that runs their

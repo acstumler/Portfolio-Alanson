@@ -67,7 +67,7 @@ export function TerrainBackground() {
       ctx.fillStyle = "#0e0e0d"; // ink only; the ground shows through between dots
       const horizonY = height * 0.3;
       const rows = 74;
-      const cols = Math.ceil(width / 16);
+      const cols = Math.ceil(width / (width < 600 ? 12 : 16)); // denser columns on narrow screens
       const drift = tSec * 0.03; // very slow breathing of the noise field
       for (let zi = 0; zi < rows; zi++) {
         const t = zi / (rows - 1); // 0 at horizon, 1 in the foreground
