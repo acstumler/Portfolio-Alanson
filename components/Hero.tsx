@@ -1,4 +1,5 @@
 import { SITE } from "@/lib/site";
+import { NodeGraph } from "@/components/NodeGraph";
 
 export function Hero() {
   return (
@@ -25,8 +26,10 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Node-graph motif (scattered → organized). Built in Phase 3, animated in Phase 4. */}
-        <div className="hero__nodegraph" aria-hidden="true" />
+        {/* Node-graph motif (scattered → organized). Static here; animated in Phase 4. */}
+        <div className="hero__nodegraph" aria-hidden="true">
+          <NodeGraph />
+        </div>
 
         <div className="mono hero__footer">
           <a className="hero__footer-item" href="#believe">↓ What I believe</a>
