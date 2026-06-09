@@ -1,2 +1,2 @@
 # Portfolio-Alanson
-Personal website and digital portfolio for Alanson Stumler — Founder & President of LumiLedger
+Personal website and digital portfolio for Alanson Stumler, who previously served as Founder and President of LumiLedger.

@@ -71,32 +71,40 @@ body{
 /* Cards */
 .card{border:1px solid var(--hair);border-radius:16px;background:var(--glass);padding:22px;-webkit-backdrop-filter:blur(28px) saturate(180%);backdrop-filter:blur(28px) saturate(180%);box-shadow:0 18px 44px rgba(0,0,0,.7)}
 .about-card p{margin-bottom:14px;color:var(--muted);line-height:1.7}
-.skills-card{margin-top:24px}
 .skills-grid{display:flex;flex-wrap:wrap;gap:10px}
 .skills-grid span{background:rgba(255,255,255,.08);border:1px solid var(--hair);border-radius:20px;padding:8px 14px;font-size:14px;color:var(--muted);white-space:nowrap}
-
-/* NOW */
-.now-card{padding:26px}
-.now-stacked{display:flex;flex-direction:column;gap:26px;margin:16px 0}
-.now-block{border-top:1px solid var(--hair);padding-top:12px}
-.now-sub{font-size:16px;margin:0 0 10px}
 
 /* Feature rows (reusable) */
 .feature-group{display:flex;flex-direction:column;gap:18px}
 .feature-item h4{margin:0;font-weight:600}
 .feature-item p{margin:4px 0 0;color:var(--muted);line-height:1.55}
 
-/* CTA */
-.cta.right{display:flex;justify-content:flex-end}
-.brochure-btn{display:flex;justify-content:flex-end;margin-top:24px}
+/* Hero eyebrow + manifesto signature */
+.eyebrow{margin:0 0 10px;font-size:14px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.signature{margin:18px 0 0;font-weight:600;color:var(--text);text-align:right}
 
-/* EXPERIENCE */
-.xp-grid-3{display:flex;flex-direction:column;gap:24px}
-.xp-card{margin:0}
-.xp-body .feature-group{margin-top:10px}
+/* What I do */
+.do-lead{margin:0 0 18px;color:var(--muted);font-size:17px;line-height:1.6}
+.do-outcome{margin:18px 0 0;color:var(--text);font-weight:600;line-height:1.6}
+.do-scope{margin:10px 0 0;color:var(--muted);line-height:1.6}
+
+/* Proof strip */
+.proof-strip{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px}
+.proof-strip span{background:rgba(255,255,255,.08);border:1px solid var(--hair);border-radius:20px;padding:8px 14px;font-size:14px;color:var(--muted)}
+
+/* Background (compact roles) */
+.bg-intro{margin:0 0 18px;max-width:760px;color:var(--muted);line-height:1.7}
+.bg-card{padding:22px}
+.bg-list .feature-item h4{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;font-size:15px}
+.bg-list .feature-item p{margin-top:2px;font-size:14px}
+.bg-dates{font-weight:400;font-size:13px;color:var(--muted)}
+.bg-skills{margin-top:20px;padding-top:18px;border-top:1px solid var(--hair)}
+.bg-skills .skills-grid span{font-size:13px;padding:6px 12px}
+.btn.btn-sm{min-width:0;margin-left:10px;padding:6px 12px;font-size:13px}
 
 /* Contact */
 #contact .contact-intro{margin-top:8px;margin-bottom:14px;line-height:1.6}
+#contact .contact-cta-line{margin-top:0;margin-bottom:16px;color:var(--text);font-weight:600}
 #contact .contact-cta{margin-top:12px;margin-bottom:8px}
 .fineprint{opacity:.9;margin-top:16px;font-size:14px}
 
