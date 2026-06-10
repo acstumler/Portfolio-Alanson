@@ -17,16 +17,10 @@ export function Hero() {
               Organized data is becoming the line between the firms that keep up and the
               ones that pull ahead. I help complex businesses get on the right side of it.
             </p>
+            <a className="hero__contact-link" href={`mailto:${SITE.email}`}>Get in touch ↗</a>
           </div>
 
           <div className="hero__aside">
-            <div className="hero__status">
-              <p className="hero__status-line">
-                <span className="hero__dot" aria-hidden="true">●</span> Open to new work
-              </p>
-              <a className="hero__contact-link" href={`mailto:${SITE.email}`}>Get in touch ↗</a>
-            </div>
-
             {/* Network web (scattered into organized). The hero's only graphic. */}
             <div className="hero__web" aria-hidden="true">
               <NetworkWeb />
