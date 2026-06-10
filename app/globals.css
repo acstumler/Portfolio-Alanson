@@ -197,7 +197,7 @@ html.lenis body {
 }
 .hero__main {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(360px, 1fr) auto;
   gap: clamp(24px, 5vw, 72px);
   align-items: start;
 }
@@ -248,7 +248,7 @@ html.lenis body {
   text-underline-offset: 4px;
 }
 .hero__web {
-  width: clamp(220px, 26vw, 320px);
+  width: clamp(300px, 30vw, 460px);
 }
 .network-web {
   width: 100%;
@@ -543,7 +543,7 @@ html.lenis body {
     text-align: left;
   }
   .hero__web {
-    width: clamp(220px, 50vw, 300px);
+    width: clamp(260px, 60vw, 420px);
   }
   .section__grid {
     grid-template-columns: 1fr;
@@ -580,9 +580,11 @@ html.lenis body {
     align-items: center;
     min-height: 44px;
   }
-  /* Web is hidden so it can never crowd the name; footer strip stacks. */
+  /* Web now shows on mobile too; it sits below the stacked name + lede, so it
+     can't crowd the name. Sized off viewport width with side padding intact. */
   .hero__web {
-    display: none;
+    display: block;
+    width: clamp(220px, 78vw, 340px);
   }
   .hero__footer {
     flex-direction: column;
