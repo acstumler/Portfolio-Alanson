@@ -1,41 +1,39 @@
-import { SITE } from "@/lib/site";
-import { NetworkWeb } from "@/components/NetworkWeb";
-
+// HERO — ported from the Lovable index "01 / Thesis" band: a 12-col editorial
+// grid with the eyebrow in the narrow rail and a large thesis headline (with
+// italic, lighter "soft" spans) + lede + two CTAs in the content column. The
+// plexus constellation lives in the page background, so the hero is type-led.
+// Copy kept em-dash-free per this project's house style.
 export function Hero() {
   return (
-    <section id="hero" className="hero" aria-label="Intro">
+    <section id="hero" className="section" aria-label="Thesis">
       <div className="container hero__inner">
-        <p className="hero__kicker">Data &amp; AI for operationally complex firms</p>
+        <div className="hero__grid">
+          <p className="eyebrow animate-fade-up">01 / Thesis</p>
 
-        <div className="hero__main">
-          <div className="hero__lead">
-            <h1 className="hero__name">
-              <span>Alanson</span>
-              <span>Stumler</span>
+          <div>
+            <h1 className="hero__title text-balance animate-fade-up">
+              AI compounds the advantage of firms whose data is already
+              <span className="hero__title-soft"> unified </span>
+              and whose workflows are
+              <span className="hero__title-soft"> agentic</span>.
             </h1>
-            <p className="hero__lede">
-              Organized data is becoming the line between the firms that keep up and the
-              ones that pull ahead. I help complex businesses get on the right side of it.
-            </p>
-            <a className="hero__contact-link" href={`mailto:${SITE.email}`}>Get in touch ↗</a>
-          </div>
 
-          <div className="hero__aside">
-            {/* Network web (scattered into organized). The hero's only graphic. */}
-            <div className="hero__web" aria-hidden="true">
-              <NetworkWeb />
+            <p className="hero__lede animate-fade-up">
+              I&apos;m Alanson Stumler. I work with operationally complex firms to
+              close that gap, one high-value workflow at a time, by capturing the
+              scattered data and undocumented expertise they already run on, then
+              layering agentic workflows on top.
+            </p>
+
+            <div className="hero__actions animate-fade-up">
+              <a href="#do" className="btn-solid">
+                See the approach <span aria-hidden>→</span>
+              </a>
+              <a href="#contact" className="btn-underline">
+                Start a conversation
+              </a>
             </div>
           </div>
-        </div>
-
-        <div className="hero__footer">
-          <a className="hero__footer-item" href="#believe">↓ What I believe</a>
-          <span className="hero__footer-item hero__footer-mid">scattered into organized</span>
-          <span className="hero__footer-item hero__links">
-            <a href={SITE.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            {" · "}
-            <a href={SITE.links.calendly} target="_blank" rel="noopener noreferrer">Calendly</a>
-          </span>
         </div>
       </div>
     </section>

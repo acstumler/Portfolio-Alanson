@@ -1,21 +1,23 @@
 import type { Metadata } from "next";
-import { Inter_Tight, Source_Serif_4 } from "next/font/google";
+import { Space_Grotesk, DM_Sans } from "next/font/google";
 import { SITE } from "@/lib/site";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.css";
 
-// Structural voice. Variable font: full weight axis available via CSS font-weight.
-const interTight = Inter_Tight({
+// Display / structural voice (headings, labels, UI). Ported from the Lovable
+// build's --font-display token.
+const spaceGrotesk = Space_Grotesk({
   variable: "--font-display",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
 });
 
-// Reading voice. Roman + italic at 400; the only two faces on the site.
-const sourceSerif = Source_Serif_4({
-  variable: "--font-serif",
+// Sans / reading voice (body copy). Ported from the Lovable build's --font-sans.
+const dmSans = DM_Sans({
+  variable: "--font-sans",
   subsets: ["latin"],
-  weight: ["400"],
+  weight: ["400", "500"],
   style: ["normal", "italic"],
   display: "swap",
 });
@@ -45,12 +47,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${interTight.variable} ${sourceSerif.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable}`}>
       <body>
         <SmoothScroll />
-        {/* Parchment texture: low-frequency mottle beneath, fine grain above. */}
-        <div className="mottle" aria-hidden="true" />
-        <div className="grain" aria-hidden="true" />
+        {/* Plexus background (constellation + washes) is painted by body::before /
+            body::after in globals.css — framework-neutral CSS, no DOM nodes. */}
         {children}
       </body>
     </html>

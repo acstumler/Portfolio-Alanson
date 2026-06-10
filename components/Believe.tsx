@@ -1,37 +1,35 @@
 import { Reveal } from "@/components/Reveal";
 
+// WHY NOW — ported from the Lovable index "02 / Why now" band: eyebrow + short
+// heading in the rail, long-form thesis in the content column with a display
+// lead paragraph. Keeps the existing #believe anchor and Reveal wrapper.
 export function Believe() {
   return (
-    <section id="believe" className="section section--believe" aria-labelledby="believe-label">
-      <div className="container">
+    <section id="believe" className="section" aria-labelledby="believe-label">
+      <div className="container section__inner">
         <Reveal>
-          <div className="section__grid">
-            <header className="section__rail">
-              <span className="section__num">001</span>
-              <h2 className="section__name" id="believe-label">What I believe</h2>
-              <span className="section__rule" aria-hidden="true" />
+          <div className="rail-grid">
+            <header className="rail">
+              <p className="eyebrow">02 / Why now</p>
+              <h2 className="rail__heading" id="believe-label">
+                The prerequisite to competing.
+              </h2>
             </header>
 
-            <div className="section__content believe__body">
-              <p>
-                For most operationally complex businesses, the information that runs their
-                most important work is scattered across disconnected systems, and the
-                judgment that actually drives it lives in the heads of a few experienced
-                people. That has always been inefficient. It was survivable.
+            <div className="rail-content rail-content--pad prose">
+              <p className="prose__lead">
+                AI applied to scattered, incomplete data produces unreliable
+                output. AI applied to unified, agent-ready data compounds.
               </p>
               <p>
-                AI is what changes the math. Firms whose data is organized and ready pull
-                further ahead as the tools improve. The ones still running on fragments and
-                memory don’t, and the gap tends to widen quietly, until it’s too wide to
-                close. <em>You can’t put AI on top of scattered data and get answers you can
-                trust.</em> The data has to be made ready first.
+                AI-native firms move faster and decide better on the same
+                problems. Firms without organized, agent-ready data fall behind
+                and cannot close the distance by simply <em>adding AI</em>.
+                Getting operational data captured and agent-ready is the
+                prerequisite, and it is precisely what these firms are least
+                equipped to do themselves.
               </p>
-              <p>
-                I think getting there is the real work of the next few years for these
-                firms, and it’s the work most of them are least equipped to do on their own.
-                That’s where I come in.
-              </p>
-              <p className="believe__sign">Alanson Stumler</p>
+              <p>That prerequisite is what I build. One workflow at a time.</p>
             </div>
           </div>
         </Reveal>

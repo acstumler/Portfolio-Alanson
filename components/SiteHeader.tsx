@@ -1,32 +1,27 @@
 const NAV = [
-  { href: "#believe", label: "Believe" },
-  { href: "#do", label: "Do" },
-  { href: "#background", label: "Background" },
-  { href: "#contact", label: "Contact" },
+  { href: "#believe", label: "Why now" },
+  { href: "#do", label: "Offering" },
+  { href: "#background", label: "Who it's for" },
 ] as const;
 
 export function SiteHeader() {
   return (
     <header className="site-header">
       <div className="container site-header__inner">
-        {/* No em-dashes per the brief: this id uses the design's middot
-            separator instead of a dash. */}
-        <span className="site-header__id">AS · Louisville, KY</span>
+        <a href="#hero" className="site-header__brand">
+          Alanson Stumler<span> · Data &amp; AI</span>
+        </a>
         <nav className="site-header__nav" aria-label="Primary">
-          {NAV.map((item) => {
-            const active = item.href === "#contact";
-            return (
-              <a
-                key={item.href}
-                href={item.href}
-                className={active ? "site-header__link is-active" : "site-header__link"}
-                aria-current={active ? "true" : undefined}
-              >
-                {item.label}
-              </a>
-            );
-          })}
+          {NAV.map((item) => (
+            <a key={item.href} href={item.href} className="site-header__link">
+              {item.label}
+            </a>
+          ))}
         </nav>
+        <a href="#contact" className="site-header__cta">
+          Start a conversation
+          <span aria-hidden>→</span>
+        </a>
       </div>
     </header>
   );

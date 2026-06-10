@@ -1,63 +1,65 @@
 import { Reveal } from "@/components/Reveal";
 
-const STEPS = [
+// OFFERING — ported from the Lovable index "03 / Offering" band: a rail-grid
+// header (eyebrow + large statement), then a two-column bordered grid laying
+// out the two layers (Operational Data Capture / Layered Agentic Workflows),
+// each with a roman-numeral marker, a paragraph, and a dash bullet list.
+const LAYERS = [
   {
-    n: "01",
-    title: "Bring the scattered data together",
-    desc: "The records that live in different systems and spreadsheets get consolidated into one organized place.",
+    num: "i.",
+    title: "Operational Data Capture",
+    body: "I take a high-value, recurring workflow and capture the data that drives it, from disconnected systems, spreadsheets, and expert judgment that was never written down, into one organized, queryable store.",
+    points: [
+      "Unify disconnected systems and spreadsheets",
+      "Encode undocumented expert judgment",
+      "Build one organized, agent-ready record",
+    ],
   },
   {
-    n: "02",
-    title: "Surface the judgment that isn’t written down",
-    desc: "The experience that drives the work, currently held in a few people’s heads, gets captured so the operation no longer depends on memory.",
-  },
-  {
-    n: "03",
-    title: "Make it visible",
-    desc: "Clear reporting on data that finally agrees with itself.",
-  },
-  {
-    n: "04",
-    title: "Put AI to work on top",
-    desc: "With the foundation in place, AI can actually be trusted to help run the work.",
+    num: "ii.",
+    title: "Layered Agentic Workflows",
+    body: "On top of that store, I layer agents that execute the workflow end-to-end, replacing the manual stitching and judgment-by-memory that used to gate every decision.",
+    points: [
+      "Agents that run the workflow, not just assist it",
+      "Decisions made on complete, current data",
+      "Compounding speed and reliability per cycle",
+    ],
   },
 ] as const;
 
 export function WhatIDo() {
   return (
-    <section id="do" className="section section--do" aria-labelledby="do-label">
-      <div className="container">
+    <section id="do" className="section" aria-labelledby="do-label">
+      <div className="container section__inner">
         <Reveal>
-          <div className="section__grid">
-            <header className="section__rail">
-              <span className="section__num">002</span>
-              <h2 className="section__name" id="do-label">What I do</h2>
-              <span className="section__rule" aria-hidden="true" />
-            </header>
+          <div className="offer__head">
+            <p className="eyebrow">03 / Offering</p>
+            <h2 id="do-label" className="text-balance">
+              Two layers. One outcome: an operation that runs on data and agents.
+            </h2>
+          </div>
 
-            <div className="section__content">
-              <p className="do__lead">
-                I work with operationally complex firms on one problem: turning information
-                that’s hard to use into a foundation they can decide and compete on.
-              </p>
-              <ol className="do__list">
-                {STEPS.map((step) => (
-                  <li key={step.n} className="do__item">
-                    <span className="do__num">{step.n}</span>
-                    <h3 className="do__title">{step.title}</h3>
-                    <p className="do__desc">{step.desc}</p>
-                  </li>
-                ))}
-              </ol>
-              <p className="do__outcome">
-                What that adds up to is a better-run operation, built on organized data and
-                clear judgment instead of guesswork.
-              </p>
-              <p className="do__scope">
-                I work with firms like this across industries, from manufacturing to logistics
-                to insurance.
-              </p>
-            </div>
+          <div className="offer-grid">
+            {LAYERS.map((layer, i) => (
+              <div
+                key={layer.title}
+                className={`offer-col ${i === 0 ? "offer-col--first" : "offer-col--second"}`}
+              >
+                <div className="offer-col__title">
+                  <span className="offer-col__num">{layer.num}</span>
+                  <h3>{layer.title}</h3>
+                </div>
+                <p className="offer-col__body">{layer.body}</p>
+                <ul className="offer-list">
+                  {layer.points.map((p) => (
+                    <li key={p}>
+                      <span aria-hidden>—</span>
+                      <span>{p}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </Reveal>
       </div>
