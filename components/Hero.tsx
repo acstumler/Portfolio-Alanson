@@ -12,17 +12,19 @@ export function Hero() {
 
           <div>
             <h1 className="hero__title text-balance animate-fade-up">
-              AI compounds the advantage of firms whose data is already
-              <span className="hero__title-soft"> unified </span>
-              and whose workflows are
-              <span className="hero__title-soft"> agentic</span>.
+              The firms that win the next decade won’t be the ones
+              <span className="hero__title-soft"> buried </span>
+              in data. They’ll be the ones that
+              <span className="hero__title-soft"> organized </span>
+              it first.
             </h1>
 
             <p className="hero__lede animate-fade-up">
-              I&apos;m Alanson Stumler. I work with operationally complex firms to
-              close that gap, one high-value workflow at a time, by capturing the
-              scattered data and undocumented expertise they already run on, then
-              layering agentic workflows on top.
+              I’m Alanson Stumler. I work with operationally complex firms to
+              close that gap, focusing on a single high-value workflow, by
+              capturing the fragmented data, undocumented expertise, and
+              processes they already run on, then building agentic workflows on
+              that foundation.
             </p>
 
             <div className="hero__actions animate-fade-up">

@@ -7,22 +7,22 @@ import { Reveal } from "@/components/Reveal";
 const LAYERS = [
   {
     num: "i.",
-    title: "Operational Data Capture",
-    body: "I take a high-value, recurring workflow and capture the data that drives it, from disconnected systems, spreadsheets, and expert judgment that was never written down, into one organized, queryable store.",
+    title: "Build the foundation",
+    body: "I take the fragmented data, undocumented expertise, and processes a business already runs on and turn them into one organized source it can actually use.",
     points: [
-      "Unify disconnected systems and spreadsheets",
-      "Encode undocumented expert judgment",
-      "Build one organized, agent-ready record",
+      "Disconnected systems and spreadsheets, pulled into one place",
+      "The know-how trapped in a few heads, captured so the work no longer depends on them",
+      "One source your people and your tools can both trust",
     ],
   },
   {
     num: "ii.",
-    title: "Layered Agentic Workflows",
-    body: "On top of that store, I layer agents that execute the workflow end-to-end, replacing the manual stitching and judgment-by-memory that used to gate every decision.",
+    title: "Build the workflows on it",
+    body: "With that foundation in place, I build agentic workflows that run the work end to end, on data that’s complete and current, instead of bolting AI onto a mess.",
     points: [
-      "Agents that run the workflow, not just assist it",
+      "Agents that run the work, not just assist with it",
       "Decisions made on complete, current data",
-      "Compounding speed and reliability per cycle",
+      "Faster and steadier every cycle",
     ],
   },
 ] as const;
@@ -33,9 +33,9 @@ export function WhatIDo() {
       <div className="container section__inner">
         <Reveal>
           <div className="offer__head">
-            <p className="eyebrow">03 / Offering</p>
+            <p className="eyebrow">03 / How I help</p>
             <h2 id="do-label" className="text-balance">
-              Two layers. One outcome: an operation that runs on data and agents.
+              First the foundation. Then the workflows that run on it.
             </h2>
           </div>
 
