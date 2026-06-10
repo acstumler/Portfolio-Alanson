@@ -420,6 +420,35 @@ html.lenis body {
   align-items: center;
   gap: 1rem;
 }
+/* Hero headshot: portrait beside the lede on desktop, above it when stacked.
+   Black and white via CSS filter only (no image processing, no new deps).
+   Dimensions are reserved (width/height on the <img> and here) so there is no
+   layout shift; the fade-in reuses .animate-fade-up, already gated by
+   prefers-reduced-motion below. */
+.hero__lede-row {
+  display: flex;
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  align-items: flex-start;
+}
+.hero__headshot {
+  margin-top: 2.5rem; /* match .hero__lede top offset so their tops align */
+  flex: 0 0 auto;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+  filter: grayscale(100%);
+}
+@media (max-width: 880px) {
+  /* Stacked: portrait sits above the lede, not beside it. */
+  .hero__lede-row {
+    flex-direction: column;
+  }
+  .hero__headshot {
+    order: -1;
+    margin-top: 0;
+  }
+}
 
 /* ============================================================ PROSE (Why now) */
 .prose {

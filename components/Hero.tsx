@@ -19,13 +19,27 @@ export function Hero() {
               it first.
             </h1>
 
-            <p className="hero__lede animate-fade-up">
-              I’m Alanson Stumler. I work with operationally complex firms to
-              close that gap, focusing on a single high-value workflow, by
-              capturing the fragmented data, undocumented expertise, and
-              processes they already run on, then building agentic workflows on
-              that foundation.
-            </p>
+            <div className="hero__lede-row">
+              <p className="hero__lede animate-fade-up">
+                I’m Alanson Stumler. I work with operationally complex firms to
+                close that gap, focusing on a single high-value workflow, by
+                capturing the fragmented data, undocumented expertise, and
+                processes they already run on, then building agentic workflows on
+                that foundation.
+              </p>
+              {/* Black-and-white portrait. Grayscale is CSS-only (no image
+                  processing, no new deps); width/height are set on the element
+                  and in CSS so the space is reserved and the layout never
+                  shifts. Fade-in reuses .animate-fade-up, which is gated by
+                  prefers-reduced-motion. */}
+              <img
+                src="/headshot.jpg"
+                alt="Alanson Stumler"
+                width={200}
+                height={200}
+                className="hero__headshot animate-fade-up"
+              />
+            </div>
 
             <div className="hero__actions animate-fade-up">
               <a href="#do" className="btn-solid">
