@@ -400,6 +400,12 @@ html.lenis body {
      cap-tops were shaved at the block's top edge. 1.1 enlarges the line box
      just enough to clear the ascenders. Font and font-size are unchanged. */
   line-height: 1.1;
+  /* The last line's descender (e.g. the italic "g" in "organized") extends ~7px
+     past the final line box, i.e. below the title's content box, where it
+     collided with the lede block beneath it. Nothing clips it (the whole
+     ancestor chain is overflow:visible), so reserving a little space here lets
+     the box contain the descender. Scales with font-size via em. */
+  padding-bottom: 0.12em;
   letter-spacing: -0.02em;
   color: var(--ink-deep);
   max-width: 18ch;
