@@ -1,8 +1,8 @@
 import { ImageResponse } from "next/og";
 
-// Procedurally generated share image in the design system: concrete ground,
-// ink name, mono kicker. (Satori cannot render the SVG feTurbulence grain, so
-// the grain is omitted here; everything else matches the site palette.)
+// Procedurally generated share image in the design system: warm-paper ground,
+// ink name, secondary metadata. (Satori cannot render the SVG feTurbulence
+// parchment texture, so it is omitted here; the palette matches the site.)
 export const alt = "Alanson Stumler, data and AI for operationally complex firms";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -17,8 +17,8 @@ export default function OpengraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#a9aaa8",
-          color: "#0e0e0d",
+          background: "#efebe1",
+          color: "#1a1812",
           padding: "84px",
           fontFamily: "sans-serif",
         }}
@@ -27,9 +27,8 @@ export default function OpengraphImage() {
           style={{
             display: "flex",
             fontSize: 27,
-            letterSpacing: "0.06em",
-            color: "#3f403e",
-            textTransform: "uppercase",
+            letterSpacing: "0.01em",
+            color: "#5a554a",
           }}
         >
           Data & AI for operationally complex firms
@@ -52,7 +51,7 @@ export default function OpengraphImage() {
             display: "flex",
             justifyContent: "space-between",
             fontSize: 24,
-            color: "#3f403e",
+            color: "#5a554a",
           }}
         >
           <span>portfolio-alanson.vercel.app</span>

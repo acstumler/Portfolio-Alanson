@@ -42,54 +42,62 @@ export function Background() {
     <section id="background" className="section section--background" aria-labelledby="background-label">
       <div className="container">
         <Reveal>
-          <h2 className="mono section__label" id="background-label">003 / Background</h2>
+          <div className="section__grid">
+            <header className="section__rail">
+              <span className="section__num">003</span>
+              <h2 className="section__name" id="background-label">Background</h2>
+              <span className="section__rule" aria-hidden="true" />
+            </header>
 
-          <div className="bg__grid">
-            <div className="bg__col bg__col--experience">
-              <h3 className="mono bg__col-head">Experience</h3>
-              <ul className="bg__list">
-                {EXPERIENCE.map((entry) => (
-                  <li key={entry.role} className="bg__entry">
-                    <p className="mono bg__date">{entry.date}</p>
-                    <p className="bg__role">{entry.role}</p>
-                    <p className="bg__desc">
-                      {entry.desc}
-                      {"brochure" in entry ? (
-                        <>
-                          {" "}
-                          <a
-                            className="bg__brochure"
-                            href={entry.brochure}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            LumiLedger Brochure ↗
-                          </a>
-                        </>
-                      ) : null}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <div className="section__content section__content--wide">
+              <div className="bg__grid">
+                <div className="bg__col bg__col--experience">
+                  <h3 className="bg__col-head">Experience</h3>
+                  <ul className="bg__list">
+                    {EXPERIENCE.map((entry) => (
+                      <li key={entry.role} className="bg__entry">
+                        <p className="bg__date">{entry.date}</p>
+                        <p className="bg__role">{entry.role}</p>
+                        <p className="bg__desc">
+                          {entry.desc}
+                          {"brochure" in entry ? (
+                            <>
+                              {" "}
+                              <a
+                                className="bg__brochure"
+                                href={entry.brochure}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                LumiLedger Brochure ↗
+                              </a>
+                            </>
+                          ) : null}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
 
-            <div className="bg__col bg__col--skills">
-              <h3 className="mono bg__col-head">Skills</h3>
-              <ul className="bg__skills">
-                {SKILLS.map((skill) => (
-                  <li key={skill}>{skill}</li>
-                ))}
-              </ul>
-            </div>
+                <div className="bg__col bg__col--skills">
+                  <h3 className="bg__col-head">Skills</h3>
+                  <ul className="bg__skills">
+                    {SKILLS.map((skill) => (
+                      <li key={skill}>{skill}</li>
+                    ))}
+                  </ul>
+                </div>
 
-            <div className="bg__col bg__col--proof">
-              <h3 className="mono bg__col-head">Proof</h3>
-              <ul className="bg__proof">
-                {PROOF.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-              {/* Room for a first client or result here later. Do not manufacture metrics. */}
+                <div className="bg__col bg__col--proof">
+                  <h3 className="bg__col-head">Proof</h3>
+                  <ul className="bg__proof">
+                    {PROOF.map((item) => (
+                      <li key={item}>{item}</li>
+                    ))}
+                  </ul>
+                  {/* Room for a first client or result here later. Do not manufacture metrics. */}
+                </div>
+              </div>
             </div>
           </div>
         </Reveal>

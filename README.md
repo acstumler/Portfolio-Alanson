@@ -8,9 +8,10 @@ Live at https://portfolio-alanson.vercel.app
 ## Stack
 - Next.js (App Router), React, TypeScript
 - A single global stylesheet with CSS design tokens (no Tailwind, no UI kit)
-- framer-motion (section reveals, node-graph animation) and lenis (smooth scroll)
-- Fonts via next/font: Inter Tight (display and body), Geist Mono (labels)
-- A procedural 2D-canvas dot-terrain and an SVG film grain (no image assets, no WebGL)
+- framer-motion (section reveals, network-web animation) and lenis (smooth scroll)
+- Fonts via next/font: Inter Tight (structural voice), Source Serif 4 (reading voice)
+- A procedural parchment texture — low-frequency mottle and fine grain, both SVG
+  filters (no image assets, no WebGL, no canvas)
 
 ## Develop
 This repo uses pnpm (see the policy below).

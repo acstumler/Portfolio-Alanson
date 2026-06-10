@@ -1,21 +1,22 @@
 import type { Metadata } from "next";
-import { Inter_Tight, Geist_Mono } from "next/font/google";
+import { Inter_Tight, Source_Serif_4 } from "next/font/google";
 import { SITE } from "@/lib/site";
-import { TerrainBackground } from "@/components/TerrainBackground";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.css";
 
-// Display + body face. Variable font: full weight axis available via CSS font-weight.
+// Structural voice. Variable font: full weight axis available via CSS font-weight.
 const interTight = Inter_Tight({
   variable: "--font-display",
   subsets: ["latin"],
   display: "swap",
 });
 
-// Labels / metadata face.
-const geistMono = Geist_Mono({
-  variable: "--font-mono",
+// Reading voice. Roman + italic at 400; the only two faces on the site.
+const sourceSerif = Source_Serif_4({
+  variable: "--font-serif",
   subsets: ["latin"],
+  weight: ["400"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -44,10 +45,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${interTight.variable} ${geistMono.variable}`}>
+    <html lang="en" className={`${interTight.variable} ${sourceSerif.variable}`}>
       <body>
         <SmoothScroll />
-        <TerrainBackground />
+        {/* Parchment texture: low-frequency mottle beneath, fine grain above. */}
+        <div className="mottle" aria-hidden="true" />
         <div className="grain" aria-hidden="true" />
         {children}
       </body>

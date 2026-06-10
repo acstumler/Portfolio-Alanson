@@ -28,28 +28,37 @@ export function WhatIDo() {
     <section id="do" className="section section--do" aria-labelledby="do-label">
       <div className="container">
         <Reveal>
-          <h2 className="mono section__label" id="do-label">002 / What I do</h2>
-          <p className="do__lead">
-            I work with operationally complex firms on one problem: turning information
-            that’s hard to use into a foundation they can decide and compete on.
-          </p>
-          <ol className="do__list">
-            {STEPS.map((step) => (
-              <li key={step.n} className="do__item">
-                <span className="mono do__num">{step.n}</span>
-                <h3 className="do__title">{step.title}</h3>
-                <p className="do__desc">{step.desc}</p>
-              </li>
-            ))}
-          </ol>
-          <p className="do__outcome">
-            What that adds up to is a better-run operation, built on organized data and
-            clear judgment instead of guesswork.
-          </p>
-          <p className="do__scope">
-            I work with firms like this across industries, from manufacturing to logistics
-            to insurance.
-          </p>
+          <div className="section__grid">
+            <header className="section__rail">
+              <span className="section__num">002</span>
+              <h2 className="section__name" id="do-label">What I do</h2>
+              <span className="section__rule" aria-hidden="true" />
+            </header>
+
+            <div className="section__content">
+              <p className="do__lead">
+                I work with operationally complex firms on one problem: turning information
+                that’s hard to use into a foundation they can decide and compete on.
+              </p>
+              <ol className="do__list">
+                {STEPS.map((step) => (
+                  <li key={step.n} className="do__item">
+                    <span className="do__num">{step.n}</span>
+                    <h3 className="do__title">{step.title}</h3>
+                    <p className="do__desc">{step.desc}</p>
+                  </li>
+                ))}
+              </ol>
+              <p className="do__outcome">
+                What that adds up to is a better-run operation, built on organized data and
+                clear judgment instead of guesswork.
+              </p>
+              <p className="do__scope">
+                I work with firms like this across industries, from manufacturing to logistics
+                to insurance.
+              </p>
+            </div>
+          </div>
         </Reveal>
       </div>
     </section>

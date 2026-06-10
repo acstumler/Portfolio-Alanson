@@ -11,8 +11,8 @@ export function SiteHeader() {
       <div className="container site-header__inner">
         {/* No em-dashes per the brief: this id uses the design's middot
             separator instead of a dash. */}
-        <span className="mono site-header__id">AS · Louisville, KY</span>
-        <nav className="mono site-header__nav" aria-label="Primary">
+        <span className="site-header__id">AS · Louisville, KY</span>
+        <nav className="site-header__nav" aria-label="Primary">
           {NAV.map((item) => {
             const active = item.href === "#contact";
             return (

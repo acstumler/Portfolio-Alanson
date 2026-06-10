@@ -1,43 +1,42 @@
 /* ============================================================
-   DESIGN SYSTEM (locked, monochrome)
-   Palette, film grain, fluid type scale, and layout. Paired with the
-   canvas dot-terrain, SVG grain, and framer-motion reveals plus the
-   node-graph animation. All motion respects prefers-reduced-motion.
+   DESIGN SYSTEM — warm editorial (monochrome, two voices)
+   Warm-paper palette, parchment mottle + fine grain (both procedural
+   SVG filters, no image assets), a fluid type scale across two faces —
+   Source Serif 4 (reading voice) and Inter Tight (structural voice) —
+   side-rail sections, and framer-motion reveals + the network-web
+   animation. All motion respects prefers-reduced-motion.
    ============================================================ */
 
 :root {
-  /* --- Ground / surfaces --- */
-  --ground: #a9aaa8;
-  --ground-tint: #9b9c9a;
-  --hairline: #8e8f8d;
-  --hairline-strong: #909290;
+  /* --- Ground / surfaces (warm paper) --- */
+  --ground: #efebe1;
+  --ground-tint: #e5e0d2; /* deeper band, used for the sticky header bar */
+  --hairline: #dad4c4;
+  --hairline-strong: #d5cfbe;
 
-  /* --- Ink / text --- */
-  --ink: #0e0e0d;
-  --text: #2c2d2b;
-  --label: #34352f;
-  --faint: #3a3b39;
+  /* --- Ink / text (warm, monochrome) --- */
+  --ink: #1a1812; /* name, headings, primary */
+  --text: #2e2b24; /* body */
+  --label: #5a554a; /* secondary / labels */
+  --faint: #666150; /* faint — darkened from #75705f to clear WCAG AA 4.5:1 */
 
   /* --- Type faces (font vars set on <html> by next/font) --- */
   --ff-display: var(--font-display), "Inter Tight", system-ui, -apple-system,
     "Segoe UI", Roboto, sans-serif;
-  --ff-mono: var(--font-mono), "Geist Mono", ui-monospace, SFMono-Regular, Menlo,
-    monospace;
+  --ff-serif: var(--font-serif), "Source Serif 4", Georgia, "Times New Roman",
+    serif;
 
   /* --- Type constants --- */
   --measure: 62ch;
-  --tracking-display: -0.045em;
-  --leading-display: 0.94;
-  --leading-body: 1.55;
-  --tracking-mono: 0.06em;
+  --leading-serif: 1.63;
 
   /* --- Fluid type scale --- */
-  --t-mono: clamp(10px, 0.4vw + 8.6px, 11px);
-  --t-body: clamp(15px, 0.4vw + 13.5px, 17px);
-  --t-lead: clamp(18px, 0.8vw + 15px, 22px);
-  --t-do-title: clamp(19px, 1.1vw + 14px, 26px);
-  --t-closing: clamp(28px, 3.4vw + 12px, 54px);
-  --t-name: clamp(56px, 13vw, 120px);
+  --t-label: clamp(12.5px, 0.2vw + 12px, 14px);
+  --t-serif-lede: clamp(17.5px, 0.5vw + 16px, 19px);
+  --t-serif-body: clamp(17.5px, 0.4vw + 16px, 19px);
+  --t-do-title: clamp(20px, 1vw + 15px, 26px);
+  --t-closing: clamp(28px, 3.4vw + 12px, 52px);
+  --t-name: clamp(52px, 6vw + 30px, 96px);
 
   /* --- Rhythm --- */
   --gutter: clamp(20px, 5vw, 64px);
@@ -67,9 +66,9 @@ body {
   background: var(--ground);
   color: var(--text);
   font-family: var(--ff-display);
-  font-size: var(--t-body);
+  font-size: 16px;
   font-weight: 400;
-  line-height: var(--leading-body);
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -81,6 +80,11 @@ a {
 }
 svg {
   display: block;
+}
+
+::selection {
+  background: var(--hairline);
+  color: var(--ink);
 }
 
 :focus-visible {
@@ -103,27 +107,31 @@ html.lenis body {
   overflow: clip;
 }
 
-/* --- Film grain: SVG fractalNoise over the ground; content sits crisply above. --- */
+/* ============================================================ PARCHMENT TEXTURE
+   Two procedural layers, both full-bleed and fixed behind all content.
+   Layer A (mottle): low-frequency warm wash, rendered large and scaled to
+   cover so no tiling repeat is visible — felt more than seen. Layer B (fine
+   grain): high-frequency warm static, tiled. Both multiply, pointer-events none.
+   Browsers rasterize these data-URIs once, so there is no per-frame cost. */
+.mottle {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  opacity: 0.5;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1400' height='1000'%3E%3Cfilter id='m' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.006' numOctaves='3' seed='11' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.44 0 0 0 0 0.40 0 0 0 0 0.32 0 0 0 0.44 0'/%3E%3C/filter%3E%3Crect width='1400' height='1000' filter='url(%23m)'/%3E%3C/svg%3E")
+    center / cover no-repeat;
+}
 .grain {
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
   mix-blend-mode: multiply;
-  opacity: 0.5;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.2;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.45 0 0 0 0 0.41 0 0 0 0 0.34 0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
   background-size: 200px 200px;
-}
-
-/* --- Procedural dot-terrain: hero background, beneath the grain (z -2), behind content. --- */
-.terrain {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: -2;
-  pointer-events: none;
-  display: block;
 }
 
 /* --- Layout primitive --- */
@@ -134,28 +142,12 @@ html.lenis body {
   padding-inline: var(--gutter);
 }
 
-/* --- Type utilities --- */
-.mono {
-  font-family: var(--ff-mono);
-  font-size: var(--t-mono);
-  letter-spacing: var(--tracking-mono);
-  font-weight: 400;
-  color: var(--label);
-}
-.display {
-  font-family: var(--ff-display);
-  font-weight: 600;
-  letter-spacing: var(--tracking-display);
-  line-height: var(--leading-display);
-  color: var(--ink);
-}
-
 /* ============================================================ HEADER */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: var(--ground);
+  background: var(--ground-tint);
   border-bottom: 1px solid var(--hairline);
 }
 .site-header__inner {
@@ -164,6 +156,9 @@ html.lenis body {
   justify-content: space-between;
   gap: 24px;
   padding-block: 14px;
+  font-family: var(--ff-display);
+  font-weight: 500;
+  font-size: 13px;
 }
 .site-header__id {
   color: var(--label);
@@ -173,7 +168,7 @@ html.lenis body {
   gap: clamp(14px, 2vw, 28px);
 }
 .site-header__link {
-  color: var(--faint);
+  color: var(--label);
   transition: color 0.2s ease;
 }
 .site-header__link:hover {
@@ -188,42 +183,58 @@ html.lenis body {
 /* ============================================================ HERO */
 .hero {
   position: relative;
-  padding-block: clamp(48px, 8vw, 104px) var(--section-pad);
+  padding-block: clamp(40px, 7vw, 88px) var(--section-pad);
 }
 .hero__inner {
   position: relative;
 }
 .hero__kicker {
+  font-family: var(--ff-display);
+  font-weight: 500;
+  font-size: clamp(13px, 0.4vw + 12px, 14px);
   color: var(--label);
-  margin-bottom: clamp(24px, 5vw, 56px);
+  margin-bottom: clamp(28px, 5vw, 56px);
+}
+.hero__main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(24px, 5vw, 72px);
+  align-items: start;
 }
 .hero__name {
+  font-family: var(--ff-display);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 0.98;
   font-size: var(--t-name);
+  color: var(--ink);
 }
 .hero__name span {
   display: block;
 }
-.hero__lower {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 40px;
-  flex-wrap: wrap;
-  margin-top: clamp(28px, 5vw, 56px);
-}
 .hero__lede {
-  max-width: 440px;
-  font-size: var(--t-lead);
-  line-height: 1.4;
-  letter-spacing: -0.01em;
+  margin-top: clamp(20px, 3vw, 32px);
+  max-width: 470px;
+  font-family: var(--ff-serif);
+  font-size: var(--t-serif-lede);
+  line-height: 1.5;
   color: var(--text);
+}
+.hero__aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: clamp(28px, 4vw, 48px);
 }
 .hero__status {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 10px;
+  gap: 8px;
   text-align: right;
+  font-family: var(--ff-display);
+  font-weight: 500;
+  font-size: 13.5px;
 }
 .hero__status-line {
   color: var(--label);
@@ -236,60 +247,116 @@ html.lenis body {
   text-decoration: underline;
   text-underline-offset: 4px;
 }
-.hero__nodegraph {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: clamp(150px, 18vw, 240px);
-  pointer-events: none;
+.hero__web {
+  width: clamp(220px, 26vw, 320px);
 }
-.nodegraph {
+.network-web {
   width: 100%;
   height: auto;
 }
 .hero__footer {
   display: flex;
   justify-content: space-between;
-  gap: 20px 32px;
+  align-items: baseline;
+  gap: 16px 32px;
   flex-wrap: wrap;
   margin-top: var(--section-pad);
   padding-top: 16px;
   border-top: 1px solid var(--hairline);
+  font-family: var(--ff-display);
+  font-weight: 500;
+  font-size: 12.5px;
   color: var(--label);
+}
+.hero__footer a {
+  color: var(--label);
+  transition: color 0.2s ease;
 }
 .hero__footer a:hover {
   color: var(--ink);
 }
+.hero__footer-mid {
+  font-family: var(--ff-serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--faint);
+}
 
-/* ============================================================ SECTIONS */
+/* ============================================================ SECTIONS
+   Side-rail layout: narrow left rail (numeral, name, short ink rule) and a
+   content column at the reading measure. Stacks to a compact header on mobile. */
 .section {
   padding-block: var(--section-pad);
   border-top: 1px solid var(--hairline);
 }
-.section__label {
-  margin-bottom: clamp(24px, 4vw, 48px);
-  color: var(--label);
+.section__grid {
+  display: grid;
+  grid-template-columns: clamp(130px, 15vw, 190px) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 64px);
+}
+.section__rail {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.section__num {
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  color: var(--faint);
+}
+.section__name {
+  font-family: var(--ff-display);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+.section__rule {
+  width: 34px;
+  height: 1px;
+  margin-top: 4px;
+  background: var(--ink);
+}
+.section__content {
+  max-width: var(--measure);
+}
+.section__content--wide {
+  max-width: none;
 }
 
-/* --- 001 Believe --- */
+/* --- 001 What I believe (manifesto) --- */
 .believe__body {
-  max-width: var(--measure);
   display: flex;
   flex-direction: column;
   gap: 1.1em;
 }
 .believe__body p {
-  font-size: var(--t-lead);
-  line-height: 1.5;
+  font-family: var(--ff-serif);
+  font-size: var(--t-serif-body);
+  line-height: var(--leading-serif);
   color: var(--text);
+}
+.believe__body em {
+  font-style: italic; /* serif italic, inherits the reading face — no bold */
+}
+.believe__body .believe__sign {
+  margin-top: 0.5em;
+  font-family: var(--ff-display);
+  font-weight: 500;
+  font-size: 13.5px;
+  font-style: normal;
+  color: var(--label);
 }
 
 /* --- 002 What I do --- */
 .do__lead {
-  max-width: var(--measure);
   margin-bottom: clamp(28px, 4vw, 48px);
-  font-size: var(--t-lead);
-  line-height: 1.45;
+  font-family: var(--ff-serif);
+  font-size: var(--t-serif-lede);
+  line-height: var(--leading-serif);
   color: var(--text);
 }
 .do__list {
@@ -309,30 +376,39 @@ html.lenis body {
 }
 .do__num {
   grid-row: span 2;
-  color: var(--faint);
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--label);
 }
 .do__title {
+  font-family: var(--ff-display);
   font-size: var(--t-do-title);
   font-weight: 600;
   letter-spacing: -0.02em;
-  line-height: 1.1;
+  line-height: 1.12;
   color: var(--ink);
 }
 .do__desc {
   max-width: 56ch;
+  font-family: var(--ff-serif);
+  font-size: var(--t-serif-body);
+  line-height: var(--leading-serif);
   color: var(--text);
 }
 .do__outcome {
   max-width: var(--measure);
   margin-top: clamp(28px, 4vw, 48px);
-  font-size: var(--t-lead);
-  font-weight: 500;
-  line-height: 1.4;
+  font-family: var(--ff-serif);
+  font-size: var(--t-serif-lede);
+  line-height: 1.5;
   color: var(--ink);
 }
 .do__scope {
   max-width: var(--measure);
   margin-top: 14px;
+  font-family: var(--ff-display);
+  font-size: 14px;
   color: var(--label);
 }
 
@@ -346,8 +422,12 @@ html.lenis body {
   margin-bottom: 18px;
   padding-bottom: 10px;
   border-bottom: 1px solid var(--hairline);
-  color: var(--label);
+  font-family: var(--ff-display);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
+  color: var(--label);
 }
 .bg__list {
   list-style: none;
@@ -356,15 +436,23 @@ html.lenis body {
   gap: 22px;
 }
 .bg__date {
-  color: var(--faint);
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: 13.5px;
+  color: var(--label);
 }
 .bg__role {
   margin-top: 3px;
+  font-family: var(--ff-display);
   font-weight: 500;
+  font-size: 15px;
   color: var(--ink);
 }
 .bg__desc {
-  margin-top: 4px;
+  margin-top: 5px;
+  font-family: var(--ff-serif);
+  font-size: 16px;
+  line-height: 1.55;
   color: var(--text);
 }
 .bg__brochure {
@@ -378,25 +466,36 @@ html.lenis body {
   display: flex;
   flex-direction: column;
   gap: 9px;
+  font-family: var(--ff-display);
+  font-size: 14.5px;
   color: var(--text);
 }
 
 /* --- 004 Contact --- */
 .contact__closing {
-  max-width: 24ch;
+  max-width: 22ch;
+  font-family: var(--ff-serif);
+  font-weight: 400;
   font-size: var(--t-closing);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  color: var(--ink);
 }
 .contact__cta-line {
   max-width: var(--measure);
   margin-top: clamp(28px, 4vw, 48px);
-  font-size: var(--t-lead);
+  font-family: var(--ff-serif);
+  font-size: var(--t-serif-lede);
+  line-height: 1.5;
   color: var(--text);
 }
 .contact__email {
   margin-top: 12px;
 }
 .contact__email .contact__link {
-  font-size: var(--t-lead);
+  font-family: var(--ff-display);
+  font-weight: 500;
+  font-size: var(--t-serif-lede);
   color: var(--ink);
   text-decoration: underline;
   text-underline-offset: 4px;
@@ -405,7 +504,13 @@ html.lenis body {
   display: flex;
   gap: 18px;
   margin-top: clamp(28px, 4vw, 44px);
+  font-family: var(--ff-display);
+  font-weight: 500;
+  font-size: 13px;
   color: var(--label);
+}
+.contact__links a {
+  transition: color 0.2s ease;
 }
 .contact__links a:hover {
   color: var(--ink);
@@ -415,28 +520,46 @@ html.lenis body {
 .site-footer {
   padding-block: 28px;
   border-top: 1px solid var(--hairline);
-  color: var(--faint);
+}
+.site-footer p {
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: 13px;
+  color: var(--label);
 }
 
 /* ============================================================ RESPONSIVE
    Layout reflow from ultrawide down to 360px. */
 @media (max-width: 880px) {
-  .bg__grid {
+  .hero__main {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: clamp(28px, 6vw, 40px);
   }
-  .hero__lower {
-    flex-direction: column;
+  .hero__aside {
     align-items: flex-start;
   }
   .hero__status {
     align-items: flex-start;
     text-align: left;
   }
-  .hero__nodegraph {
-    position: static;
-    width: clamp(150px, 42vw, 220px);
-    margin-top: 36px;
+  .hero__web {
+    width: clamp(220px, 50vw, 300px);
+  }
+  .section__grid {
+    grid-template-columns: 1fr;
+    gap: clamp(20px, 4vw, 28px);
+  }
+  .section__rail {
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+  .section__rule {
+    margin-top: 0;
+  }
+  .bg__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
 }
 
@@ -457,7 +580,10 @@ html.lenis body {
     align-items: center;
     min-height: 44px;
   }
-  /* Hero footer strip stacks instead of stretching across. */
+  /* Web is hidden so it can never crowd the name; footer strip stacks. */
+  .hero__web {
+    display: none;
+  }
   .hero__footer {
     flex-direction: column;
     gap: 8px;
