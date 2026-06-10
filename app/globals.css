@@ -396,7 +396,10 @@ html.lenis body {
   font-family: var(--ff-display);
   font-weight: 500;
   font-size: var(--t-hero);
-  line-height: 1.05;
+  /* Space Grotesk's ascenders exceed a 1.05 line box, so the first line's
+     cap-tops were shaved at the block's top edge. 1.1 enlarges the line box
+     just enough to clear the ascenders. Font and font-size are unchanged. */
+  line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--ink-deep);
   max-width: 18ch;
@@ -429,6 +432,12 @@ html.lenis body {
   display: flex;
   gap: clamp(1.5rem, 3vw, 2.5rem);
   align-items: flex-start;
+}
+/* Left column: lede + CTAs stacked. min-width: 0 lets it shrink in the flex
+   row; the CTAs (.hero__actions) sit directly beneath the lede and are no
+   longer below the headshot, so the taller headshot can't push them down. */
+.hero__lede-col {
+  min-width: 0;
 }
 .hero__headshot {
   margin-top: 2.5rem; /* match .hero__lede top offset so their tops align */

@@ -19,14 +19,29 @@ export function Hero() {
               it first.
             </h1>
 
+            {/* Lower hero is two top-aligned columns: the left column stacks the
+                lede and the CTAs (CTAs sit directly under the lede), the right
+                column holds the headshot. align-items: start means the headshot's
+                extra height extends downward on its own and never pushes the CTAs. */}
             <div className="hero__lede-row">
-              <p className="hero__lede animate-fade-up">
-                I’m Alanson Stumler. I work with operationally complex firms to
-                close that gap, focusing on a single high-value workflow, by
-                capturing the fragmented data, undocumented expertise, and
-                processes they already run on, then building agentic workflows on
-                that foundation.
-              </p>
+              <div className="hero__lede-col">
+                <p className="hero__lede animate-fade-up">
+                  I’m Alanson Stumler. I work with operationally complex firms to
+                  close that gap, focusing on a single high-value workflow, by
+                  capturing the fragmented data, undocumented expertise, and
+                  processes they already run on, then building agentic workflows on
+                  that foundation.
+                </p>
+
+                <div className="hero__actions animate-fade-up">
+                  <a href="#do" className="btn-solid">
+                    See the approach <span aria-hidden>→</span>
+                  </a>
+                  <a href="#contact" className="btn-underline">
+                    Start a conversation
+                  </a>
+                </div>
+              </div>
               {/* Black-and-white portrait. Grayscale is CSS-only (no image
                   processing, no new deps); width/height are set on the element
                   and in CSS so the space is reserved and the layout never
@@ -39,15 +54,6 @@ export function Hero() {
                 height={200}
                 className="hero__headshot animate-fade-up"
               />
-            </div>
-
-            <div className="hero__actions animate-fade-up">
-              <a href="#do" className="btn-solid">
-                See the approach <span aria-hidden>→</span>
-              </a>
-              <a href="#contact" className="btn-underline">
-                Start a conversation
-              </a>
             </div>
           </div>
         </div>
