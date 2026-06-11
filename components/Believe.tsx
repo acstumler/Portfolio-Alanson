@@ -15,7 +15,7 @@ const SOURCES = [
     href: "https://www.artificialintelligence-news.com/wp-content/uploads/2025/08/ai_report_2025.pdf",
   },
   {
-    label: "Gartner · 40% of Agentic AI Projects Canceled by 2027",
+    label: "Gartner · Forty percent of Agentic AI Projects Canceled by 2027",
     href: "https://www.gartner.com/en/newsroom/press-releases/2025-06-25-gartner-predicts-over-40-percent-of-agentic-ai-projects-will-be-canceled-by-end-of-2027",
   },
 ] as const;

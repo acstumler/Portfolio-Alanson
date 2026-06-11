@@ -94,7 +94,10 @@ body {
       color-mix(in oklch, var(--paper-soft) 45%, transparent),
       transparent 65%
     );
-  background-attachment: fixed, fixed;
+  /* No background-attachment: fixed — iOS Safari and most mobile browsers ignore
+     it, so the corner washes would not paint on mobile. The dominant texture
+     (plexus + multiply wash) is carried by the position: fixed pseudo-elements
+     below, which are mobile-safe, so the washes can scroll with the page. */
 }
 
 a {
@@ -178,23 +181,11 @@ main,
   z-index: 1;
 }
 
-/* Reduce texture intensity on smaller screens to preserve text contrast. */
-@media (max-width: 768px) {
-  body::before {
-    opacity: 0.35;
-  }
-  body::after {
-    opacity: 0.6;
-  }
-}
-@media (max-width: 480px) {
-  body::before {
-    opacity: 0.22;
-  }
-  body::after {
-    display: none;
-  }
-}
+/* The plexus (body::before) and multiply wash (body::after) are position: fixed
+   pseudo-elements, which render on mobile the same as on desktop, so no
+   width-based opacity reduction is applied — the texture is the same strength
+   across viewports. Contrast/transparency preferences below still dial it back
+   or remove it for users who ask for that. */
 @media (prefers-contrast: more) {
   body::before,
   body::after {
@@ -387,7 +378,10 @@ html.lenis body {
 
 /* ============================================================ HERO */
 .hero__inner {
-  padding-block: clamp(5rem, 10vw, 8rem) clamp(5rem, 8vw, 7rem);
+  /* Top padding is tight so the hero sits just beneath the sticky header and
+     fits in the viewport; the header is in normal flow (position: sticky), so a
+     small top pad cannot slide hero content under it. Bottom padding unchanged. */
+  padding-block: clamp(2rem, 4vw, 3rem) clamp(5rem, 8vw, 7rem);
 }
 .hero__grid {
   display: grid;
@@ -431,7 +425,7 @@ html.lenis body {
   align-items: center;
   gap: 1rem;
 }
-/* Hero headshot: portrait beside the lede on desktop, above it when stacked.
+/* Hero headshot: portrait beside the lede on desktop, below it when stacked.
    Black and white via CSS filter only (no image processing, no new deps).
    Dimensions are reserved (width/height on the <img> and here) so there is no
    layout shift; the fade-in reuses .animate-fade-up, already gated by
@@ -457,13 +451,12 @@ html.lenis body {
   filter: grayscale(100%);
 }
 @media (max-width: 880px) {
-  /* Stacked: portrait sits above the lede, not beside it. */
+  /* Stacked: the portrait drops below the lede and CTAs (source order is
+     lede-col then headshot, so no order override is needed). Final mobile order
+     is headline, lede, CTAs, then headshot at the bottom of the hero. The base
+     2.5rem top margin gives it air beneath the CTAs. Desktop is unaffected. */
   .hero__lede-row {
     flex-direction: column;
-  }
-  .hero__headshot {
-    order: -1;
-    margin-top: 0;
   }
 }
 
