@@ -29,7 +29,7 @@ export function Believe() {
             <header className="rail">
               <p className="eyebrow">02 / Why now</p>
               <h2 className="rail__heading" id="believe-label">
-                AI rewards the firms that did the groundwork first.
+                The prerequisite to competing.
               </h2>
             </header>
 
@@ -50,7 +50,6 @@ export function Believe() {
               </p>
 
               <p className="sources">
-                <span className="sources__label">The research</span>
                 {SOURCES.map((s, i) => (
                   <Fragment key={s.href}>
                     {i > 0 && <span className="sources__div" aria-hidden />}

@@ -496,16 +496,14 @@ html.lenis body {
   line-height: 1.5;
   color: var(--muted-foreground);
 }
-.sources__label {
-  font-weight: 500;
-}
 .sources__link {
-  color: inherit;
-}
-.sources__link:hover {
-  color: var(--ink);
+  color: var(--accent);
   text-decoration: underline;
   text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+.sources__link:hover {
+  opacity: 0.7;
 }
 .sources__div {
   width: 1px;
