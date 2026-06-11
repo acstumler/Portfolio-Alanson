@@ -25,16 +25,16 @@ export function Background() {
 
             <div className="rail-content rail-content--pad prose">
               <p className="prose__lead">
-                I spent most of a decade in tax and advisory inside operationally
-                complex firms, logging more than 4,000 hours across tax seasons
-                and structuring complex entities. That&rsquo;s where I saw how
-                these businesses actually run: not in the system, but in
-                spreadsheets, workarounds, and the people who&rsquo;ve done the
-                job long enough to just know. The hard part of putting AI on an
-                operation isn&rsquo;t the technology. It&rsquo;s understanding the
-                work well enough to know what to build and whether what comes back
-                is right. I work on both sides of that: I know these firms from
-                the inside, and I build the systems that organize them.
+                I spent most of a decade in financial advisory and tax inside
+                operationally complex firms, logging more than 4,000 hours across
+                tax seasons and structuring complex entities. That&rsquo;s where I
+                saw how these businesses actually run: not in the system, but in
+                spreadsheets, workarounds, and the people who&rsquo;ve done the job
+                long enough and &ldquo;just know.&rdquo; The hard part of putting AI
+                on an operation isn&rsquo;t the technology, it is understanding the
+                work enough to know what to build and if the output is accurate and
+                valuable. I spent that decade learning what the software
+                doesn&rsquo;t show.
               </p>
               <p className="sources">Bellarmine MBA · B.A. Accountancy</p>
             </div>
