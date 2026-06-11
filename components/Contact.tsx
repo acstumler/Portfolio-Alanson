@@ -1,16 +1,50 @@
 "use client";
 
-import { useState } from "react";
+import { Fragment, useState, type FormEvent } from "react";
 import { Reveal } from "@/components/Reveal";
-import { SITE } from "@/lib/site";
+import { SITE, CONTACT_FORM_ENDPOINT } from "@/lib/site";
 
-// CONTACT — ported from the Lovable /contact page composition, folded into the
-// single-page index as the closing band: rail eyebrow + heading + lede, then a
-// two-column layout of contact facts and the inquiry form. The form mirrors
-// Lovable's behaviour (local submitted state, no backend). Real email/links come
-// from SITE so contact details stay correct. Copy kept em-dash-free.
+// CONTACT — section 05. Conformed to the same rail grid as sections 02 to 04:
+// the eyebrow + heading sit in the left rail, and the intro paragraphs plus the
+// inquiry form fill the right content column (rail-content rail-content--pad) at
+// the same width as the prose in those sections. The form POSTs to Formspree via
+// the built-in fetch() (no email client dependency); a status enum drives the
+// submitting / success / error states and success is only ever reported when the
+// response was ok, so the entered values are never silently dropped. Copy is
+// em-dash free with curly glyphs per house style.
+
+type Status = "idle" | "submitting" | "success" | "error";
+
+// Alternate ways to reach me, middot-separated, in the section 02 sources link
+// styling (accent + underline, opens in a new tab, wraps on narrow viewports).
+const ELSEWHERE = [
+  { label: "Contact", href: SITE.links.contact },
+  { label: "Calendly", href: SITE.links.calendly },
+  { label: "LinkedIn", href: SITE.links.linkedin },
+] as const;
+
 export function Contact() {
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState<Status>("idle");
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("submitting");
+    const data = new FormData(e.currentTarget);
+    try {
+      const res = await fetch(CONTACT_FORM_ENDPOINT, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+      if (res.ok) {
+        setStatus("success");
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  }
 
   return (
     <section
@@ -23,105 +57,129 @@ export function Contact() {
           <div className="rail-grid">
             <header className="rail">
               <p className="eyebrow">05 / Contact</p>
+              <h2 id="contact-label" className="rail__heading">
+                Start with one workflow.
+              </h2>
             </header>
 
-            <div className="rail-content">
-              <h2 id="contact-label" className="contact__heading text-balance">
-                Tell me about the workflow.
-              </h2>
-              <p className="contact__lede">
-                The best conversations start with one specific, high-value,
-                recurring workflow that runs on scattered data and judgment that
-                was never written down.
-              </p>
+            <div className="rail-content rail-content--pad">
+              <div className="prose">
+                <p className="prose__lead">
+                  A workflow is something your operation runs again and again,
+                  where doing it well takes judgment and getting it wrong is
+                  quietly expensive. The information it needs is scattered across
+                  systems, software, and spreadsheets, and the part that makes it
+                  work well isn’t written down anywhere. It lives in the judgment
+                  of the people who have done the job long enough to “just know.”
+                </p>
+                <p>
+                  If one came to mind while you read that, that’s the one.
+                  Describe what it is and what makes it slow, expensive, or
+                  fragile today.
+                </p>
+              </div>
 
-              <div className="contact-grid">
-                <div className="contact-info">
-                  <div>
-                    <p className="eyebrow">Email</p>
-                    <a
-                      className="contact-info__value"
-                      href={`mailto:${SITE.email}`}
-                    >
-                      {SITE.email}
-                    </a>
-                  </div>
-                  <div>
-                    <p className="eyebrow">Response</p>
-                    <p className="contact-info__text">
-                      Within two business days.
-                    </p>
-                  </div>
-                  <div>
-                    <p className="eyebrow">Elsewhere</p>
-                    <p className="contact-info__text">
-                      <a
-                        href={SITE.links.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        LinkedIn
-                      </a>
-                      {" · "}
-                      <a
-                        href={SITE.links.calendly}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Calendly
-                      </a>
-                    </p>
-                  </div>
+              {status === "success" ? (
+                <div className="contact-received">
+                  <p className="eyebrow">Received</p>
+                  <p className="contact-received__title">
+                    Thanks, I&apos;ll be in touch shortly.
+                  </p>
                 </div>
-
-                {submitted ? (
-                  <div className="contact-received">
-                    <p className="eyebrow">Received</p>
-                    <p className="contact-received__title">
-                      Thanks, I&apos;ll be in touch shortly.
-                    </p>
-                  </div>
-                ) : (
-                  <form
-                    className="contact-form"
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      setSubmitted(true);
-                    }}
-                  >
-                    <Field label="Name" name="name" required />
-                    <Field label="Firm" name="firm" required />
-                    <Field
-                      label="Email"
-                      name="email"
-                      type="email"
+              ) : (
+                <form className="contact-form" onSubmit={handleSubmit}>
+                  <Field label="Name" name="name" required />
+                  <Field label="Firm" name="firm" required />
+                  <Field
+                    label="Email"
+                    name="email"
+                    type="email"
+                    required
+                    full
+                  />
+                  <Field label="Role" name="role" full />
+                  <div className="field--full">
+                    <label className="eyebrow field__label" htmlFor="workflow">
+                      The workflow
+                    </label>
+                    <textarea
+                      id="workflow"
+                      name="workflow"
+                      rows={5}
                       required
-                      full
+                      className="field__textarea"
+                      placeholder="What the workflow is, and what makes it slow, expensive, or fragile today."
                     />
-                    <Field label="Role" name="role" full />
-                    <div className="field--full">
-                      <label className="eyebrow field__label" htmlFor="workflow">
-                        The workflow
-                      </label>
-                      <textarea
-                        id="workflow"
-                        name="workflow"
-                        rows={5}
-                        required
-                        className="field__textarea"
-                        placeholder="Briefly: what is the recurring workflow, and what makes it expensive or fragile today?"
-                      />
-                    </div>
-                    <div className="contact-form__foot">
-                      <p className="contact-form__note">
-                        Replies within 2 business days
-                      </p>
-                      <button type="submit" className="btn-solid">
-                        Send <span aria-hidden>→</span>
-                      </button>
-                    </div>
-                  </form>
-                )}
+                  </div>
+
+                  {/* Subject line for the inbound email, plus a honeypot: bots
+                      fill hidden fields, so a non-empty _gotcha is treated as
+                      spam by Formspree. Neither is shown to the user. */}
+                  <input
+                    type="hidden"
+                    name="_subject"
+                    value="New inquiry from the portfolio site"
+                  />
+                  <input
+                    type="text"
+                    name="_gotcha"
+                    style={{ display: "none" }}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+
+                  <div className="contact-form__foot">
+                    <p className="contact-form__note">
+                      Replies within 2 business days
+                    </p>
+                    <button
+                      type="submit"
+                      className="btn-solid"
+                      disabled={status === "submitting"}
+                    >
+                      {status === "submitting" ? "Sending…" : "Send"}{" "}
+                      <span aria-hidden>→</span>
+                    </button>
+                  </div>
+
+                  {status === "error" && (
+                    <p className="contact-form__error" role="alert">
+                      That didn’t send. Please try again, or email me directly at{" "}
+                      <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+                    </p>
+                  )}
+                </form>
+              )}
+
+              <div className="contact-meta">
+                <div>
+                  <p className="eyebrow">Email</p>
+                  <p className="contact-meta__text">
+                    <a href={`mailto:${SITE.email}`}>{SITE.email}</a>
+                  </p>
+                </div>
+                <div>
+                  <p className="eyebrow">Elsewhere</p>
+                  <p className="sources contact-meta__links">
+                    {ELSEWHERE.map((l, i) => (
+                      <Fragment key={l.href}>
+                        {i > 0 && (
+                          <span className="contact-meta__dot" aria-hidden>
+                            ·
+                          </span>
+                        )}
+                        <a
+                          className="sources__link"
+                          href={l.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {l.label}
+                        </a>
+                      </Fragment>
+                    ))}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
