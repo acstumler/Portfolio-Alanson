@@ -483,6 +483,35 @@ html.lenis body {
 .prose em {
   font-style: italic;
 }
+/* Quiet sources line beneath the Why-now paragraphs: small, faint, in the
+   existing inherit-color + underline-on-hover link treatment. Wraps gracefully;
+   the three links are separated by a thin faint rule (the labels already carry
+   middots, so no middot is used as a separator). Reuses existing tokens. */
+.sources {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.9rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--muted-foreground);
+}
+.sources__label {
+  font-weight: 500;
+}
+.sources__link {
+  color: inherit;
+}
+.sources__link:hover {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.sources__div {
+  width: 1px;
+  height: 0.9em;
+  background: var(--rule);
+}
 
 /* ============================================================ OFFERING */
 .offer__head {
