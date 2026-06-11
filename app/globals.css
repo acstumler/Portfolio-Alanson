@@ -526,51 +526,6 @@ html.lenis body {
   color: var(--ink-deep);
   max-width: 48rem;
 }
-.offer-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  border-top: 1px solid var(--rule);
-}
-.offer-col {
-  padding-block: 2.5rem;
-}
-.offer-col__title {
-  display: flex;
-  align-items: baseline;
-  gap: 1rem;
-}
-.offer-col__num {
-  font-family: var(--ff-display);
-  font-size: 0.875rem;
-  color: var(--muted-foreground);
-}
-.offer-col__title h3 {
-  font-family: var(--ff-display);
-  font-size: var(--t-h3);
-  letter-spacing: -0.02em;
-  color: var(--ink-deep);
-}
-.offer-col__body {
-  margin-top: 1.25rem;
-  color: var(--ink);
-  line-height: 1.625;
-}
-.offer-list {
-  margin-top: 1.5rem;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  font-size: 0.875rem;
-  color: var(--ink);
-}
-.offer-list li {
-  display: flex;
-  gap: 0.75rem;
-}
-.offer-list li span:first-child {
-  color: var(--muted-foreground);
-}
 
 /* ============================================================ WHO IT'S FOR */
 .who__heading {
@@ -758,35 +713,12 @@ a.contact-info__value:hover {
   .rail-content--pad {
     padding-left: 0;
   }
-  .offer-grid {
-    grid-template-columns: 1fr;
-  }
   .who-grid {
     grid-template-columns: 1fr;
     gap: 1.75rem;
   }
   .contact-form {
     grid-template-columns: 1fr;
-  }
-}
-
-@media (min-width: 881px) {
-  /* Offering: two layers side by side with an internal rule. */
-  .offer-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .offer-col--first {
-    border-right: 1px solid var(--rule);
-    padding-right: 3rem;
-  }
-  .offer-col--second {
-    padding-left: 3rem;
-  }
-}
-@media (max-width: 880px) {
-  /* Stacked offering: rule sits between the two layers. */
-  .offer-col--second {
-    border-top: 1px solid var(--rule);
   }
 }
 
