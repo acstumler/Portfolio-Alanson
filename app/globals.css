@@ -302,8 +302,10 @@ html.lenis body {
   padding-block: 1.25rem;
 }
 .site-header__brand {
-  font-family: var(--ff-display);
-  font-size: 0.875rem;
+  /* Brand renders in the body/paragraph font (--ff-sans), not the display
+     face, at 1.5x the prior 0.875rem. */
+  font-family: var(--ff-sans);
+  font-size: 1.3125rem;
   font-weight: 500;
   letter-spacing: -0.01em;
   color: var(--ink-deep);
@@ -511,22 +513,6 @@ html.lenis body {
   background: var(--rule);
 }
 
-/* ============================================================ OFFERING */
-.offer__head {
-  display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
-  gap: 1.5rem;
-  margin-bottom: 4rem;
-}
-.offer__head h2 {
-  font-family: var(--ff-display);
-  font-size: var(--t-h2);
-  letter-spacing: -0.02em;
-  line-height: 1.08;
-  color: var(--ink-deep);
-  max-width: 48rem;
-}
-
 /* ============================================================ WHO IT'S FOR */
 .who__heading {
   font-family: var(--ff-display);
@@ -700,7 +686,6 @@ a.contact-info__value:hover {
 @media (max-width: 880px) {
   .hero__grid,
   .rail-grid,
-  .offer__head,
   .contact-grid {
     grid-template-columns: 1fr;
   }

@@ -1,7 +1,7 @@
 const NAV = [
   { href: "#believe", label: "Why now" },
   { href: "#do", label: "Offering" },
-  { href: "#background", label: "Who it's for" },
+  { href: "#background", label: "Experience" },
 ] as const;
 
 export function SiteHeader() {
@@ -9,7 +9,7 @@ export function SiteHeader() {
     <header className="site-header">
       <div className="container site-header__inner">
         <a href="#hero" className="site-header__brand">
-          Alanson Stumler<span> · Data &amp; AI</span>
+          Alanson Stumler<span> · Co-Founder</span>
         </a>
         <nav className="site-header__nav" aria-label="Primary">
           {NAV.map((item) => (
