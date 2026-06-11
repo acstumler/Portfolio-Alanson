@@ -33,7 +33,7 @@ export function Background() {
                 long enough and &ldquo;just know.&rdquo; The hard part of putting AI
                 on an operation isn&rsquo;t the technology, it is understanding the
                 work enough to know what to build and if the output is accurate and
-                valuable. I spent that decade learning what the software
+                valuable. In that decade, I learned what the software
                 doesn&rsquo;t show.
               </p>
               <p className="sources">Bellarmine MBA · B.A. Accountancy</p>
