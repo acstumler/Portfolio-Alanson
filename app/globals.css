@@ -513,35 +513,6 @@ html.lenis body {
   background: var(--rule);
 }
 
-/* ============================================================ WHO IT'S FOR */
-.who__heading {
-  font-family: var(--ff-display);
-  font-size: var(--t-h2);
-  letter-spacing: -0.02em;
-  line-height: 1.08;
-  color: var(--ink-deep);
-}
-.who-grid {
-  margin-top: 2.5rem;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 2rem;
-  font-size: 0.875rem;
-}
-.who-card {
-  border-top: 1px solid var(--rule);
-  padding-top: 1.25rem;
-}
-.who-card__k {
-  font-family: var(--ff-display);
-  font-size: 1rem;
-  color: var(--ink-deep);
-}
-.who-card__v {
-  margin-top: 0.5rem;
-  color: var(--muted-foreground);
-  line-height: 1.625;
-}
 
 /* ============================================================ CONTACT */
 .contact__heading {
@@ -697,10 +668,6 @@ a.contact-info__value:hover {
   }
   .rail-content--pad {
     padding-left: 0;
-  }
-  .who-grid {
-    grid-template-columns: 1fr;
-    gap: 1.75rem;
   }
   .contact-form {
     grid-template-columns: 1fr;
