@@ -13,7 +13,7 @@ export function Hero() {
           <div>
             <h1 className="hero__title text-balance animate-fade-up">
               The firms that win the next decade won’t be the ones
-              <span className="hero__title-soft"> buried </span>
+              <span className="hero__title-soft"> drowning </span>
               in data. They’ll be the ones that
               <span className="hero__title-soft"> organized </span>
               it first.
