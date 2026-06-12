@@ -478,18 +478,22 @@ html.lenis body {
      untouched — the whole block is gated by the max-width query. */
   .hero__lede-row {
     flex-direction: column;
+    gap: 0; /* Zero the flex row-gap on mobile so each stacked item's margin-top is the sole gap between it and the previous one, with no double-counting of flex gap + margin. */
   }
   .hero__lede-col {
     display: contents;
   }
   .hero__lede {
     order: 0;
+    margin-top: 2rem; /* headline -> lede */
   }
   .hero__headshot {
     order: 1;
+    margin-top: 2rem; /* lede -> headshot */
   }
   .hero__actions {
     order: 2;
+    margin-top: 2rem; /* headshot -> buttons */
   }
 }
 
