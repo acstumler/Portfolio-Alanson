@@ -701,6 +701,25 @@ html.lenis body {
   }
 }
 
+/* Mobile background paint fix. iOS WebKit frequently fails to rasterize
+   mask-image / -webkit-mask-image and mix-blend-mode on a position: fixed
+   element, so the masked plexus (body::before) and the multiply wash
+   (body::after) drop out on iPhone even though desktop renders them. Disable
+   both iOS-hostile properties on mobile only and lift the plexus opacity a touch
+   for visibility without the radial mask fade. The desktop body::before/::after
+   rules above are untouched (mask, multiply blend, and opacity 0.7 still apply
+   on wider viewports). */
+@media (max-width: 880px) {
+  body::before {
+    -webkit-mask-image: none;
+    mask-image: none;
+    opacity: 0.85;
+  }
+  body::after {
+    mix-blend-mode: normal;
+  }
+}
+
 @media (max-width: 640px) {
   .site-header__inner {
     flex-wrap: wrap;
