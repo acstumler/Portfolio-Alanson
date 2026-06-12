@@ -196,15 +196,11 @@ main,
   z-index: 1;
 }
 
-/* The plexus (body::before) and multiply wash (body::after) are position: fixed
-   pseudo-elements. They render across the full page on mobile ONLY because the
-   root element is not a scroll container (html uses overflow-x: clip, not
-   hidden); under overflow-x: hidden, mobile WebKit clipped these to the first
-   viewport. No width-based opacity reduction is applied — the texture is the
-   same strength across viewports. Contrast/transparency preferences below still
-   dial it back or remove it for users who ask for that. */
+/* Under an increased-contrast preference, hide only the corner multiply wash
+   (body::after). Keep the plexus (body::before): it is faint, sits behind the
+   text, and does not meaningfully reduce text contrast. The background texture
+   should stay visible regardless of this setting. */
 @media (prefers-contrast: more) {
-  body::before,
   body::after {
     display: none;
   }
