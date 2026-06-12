@@ -65,7 +65,15 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  /* overflow-x: clip — NOT hidden. `hidden` forces overflow-y to compute to
+     `auto`, turning the root into a scroll container; mobile WebKit (iOS Safari
+     / iOS Chrome) then clips `position: fixed` descendants to the first viewport
+     instead of the layout viewport, so the fixed plexus + wash pseudo-elements
+     (body::before/::after) stop painting below the fold on mobile. `clip` still
+     suppresses horizontal overflow but does NOT establish a scroll container and
+     CAN coexist with overflow-y: visible, so the viewport stays the scroll
+     container and `position: fixed` anchors correctly on mobile. */
+  overflow-x: clip;
   font-family: var(--ff-sans);
 }
 
@@ -97,7 +105,9 @@ body {
   /* No background-attachment: fixed — iOS Safari and most mobile browsers ignore
      it, so the corner washes would not paint on mobile. The dominant texture
      (plexus + multiply wash) is carried by the position: fixed pseudo-elements
-     below, which are mobile-safe, so the washes can scroll with the page. */
+     below; those are only mobile-safe because the root no longer establishes a
+     scroll container (see `overflow-x: clip` on html above). The washes scroll
+     with the page. */
 }
 
 a {
@@ -182,10 +192,12 @@ main,
 }
 
 /* The plexus (body::before) and multiply wash (body::after) are position: fixed
-   pseudo-elements, which render on mobile the same as on desktop, so no
-   width-based opacity reduction is applied — the texture is the same strength
-   across viewports. Contrast/transparency preferences below still dial it back
-   or remove it for users who ask for that. */
+   pseudo-elements. They render across the full page on mobile ONLY because the
+   root element is not a scroll container (html uses overflow-x: clip, not
+   hidden); under overflow-x: hidden, mobile WebKit clipped these to the first
+   viewport. No width-based opacity reduction is applied — the texture is the
+   same strength across viewports. Contrast/transparency preferences below still
+   dial it back or remove it for users who ask for that. */
 @media (prefers-contrast: more) {
   body::before,
   body::after {
@@ -404,7 +416,11 @@ html.lenis body {
   padding-bottom: 0.12em;
   letter-spacing: -0.02em;
   color: var(--ink-deep);
-  max-width: 18ch;
+  /* Widened from 18ch so the thesis lines run a little broader on desktop/laptop
+     without becoming a full-bleed slab. The descender-clip fix above
+     (line-height 1.1 + padding-bottom 0.12em) is per-line and width-independent,
+     so the soft-italic descenders ("g"/"y") still clear at this width. */
+  max-width: 21ch;
 }
 .hero__title-soft {
   font-style: italic;
@@ -451,12 +467,28 @@ html.lenis body {
   filter: grayscale(100%);
 }
 @media (max-width: 880px) {
-  /* Stacked: the portrait drops below the lede and CTAs (source order is
-     lede-col then headshot, so no order override is needed). Final mobile order
-     is headline, lede, CTAs, then headshot at the bottom of the hero. The base
-     2.5rem top margin gives it air beneath the CTAs. Desktop is unaffected. */
+  /* Stacked, and the portrait must sit BETWEEN the lede and the CTAs. In the
+     markup the CTAs (.hero__actions) are nested inside .hero__lede-col while the
+     headshot is its sibling, so they live at different depths and plain `order`
+     can't interleave them. display: contents dissolves the .hero__lede-col box
+     on mobile, promoting the lede and the CTAs to direct flex items of this
+     column alongside the headshot; `order` then sequences all three. Final
+     mobile order: headline (above this row), lede, headshot, CTAs. Desktop is
+     untouched — the whole block is gated by the max-width query. */
   .hero__lede-row {
     flex-direction: column;
+  }
+  .hero__lede-col {
+    display: contents;
+  }
+  .hero__lede {
+    order: 0;
+  }
+  .hero__headshot {
+    order: 1;
+  }
+  .hero__actions {
+    order: 2;
   }
 }
 
